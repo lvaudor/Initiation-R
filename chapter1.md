@@ -13,9 +13,7 @@ xp: 100
 skills: 1
 ```
 
-
 La fonction **ls()** permet d'afficher l'**ensemble des objets disponibles dans l'environnement**.
-
 
 `@instructions`
 - Exécutez le code ci-contre et voyez comment l'environnement est modifié par l'exécution des deux commandes entre les appels à `ls()`.
