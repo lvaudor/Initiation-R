@@ -3,7 +3,7 @@ title: 'Objets de base'
 description: "Ces exercices visent a vous familiariser avec le fonctionnement de R, les objets, l'environnement, etc.\n\nhttp://perso.ens-lyon.fr/lise.vaudor/Supports_formation/startR_1_objets_de_base.html"
 ---
 
-## An exercise title written in sentence case
+## 1) Assignation
 
 ```yaml
 type: NormalExercise
@@ -52,5 +52,5 @@ ls()
 test_object("obj_a")
 test_object("obj_b")
 test_error()
-success_msg("Vous savez 
+success_msg("Vous savez maintenant créer des objets et modifier l'environnement (et faire un exercice sur Datacamp)!")
 ```
