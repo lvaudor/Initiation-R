@@ -1,6 +1,6 @@
 ---
-title: 'Template Chapter 1'
-description: 'This is a template chapter.'
+title: 'Objets de base'
+description: "Ces exercices visent a vous familiariser avec le fonctionnement de R, les objets, l'environnement, etc.\n\nhttp://perso.ens-lyon.fr/lise.vaudor/Supports_formation/startR_1_objets_de_base.html"
 ---
 
 ## An exercise title written in sentence case
@@ -13,19 +13,16 @@ xp: 100
 skills: 1
 ```
 
-This is the Context. It should help provide students with the background information needed.
-The Instructions that follow should be in bullet point form with clear guidance for what is expected.
+
+La fonction **ls()** permet d'afficher l'**ensemble des objets disponibles dans l'environnement**.
+
 
 `@instructions`
-- Instruction 1
-- Instruction 2
-- Instruction 3
+- Exécutez le code ci-contre et voyez comment l'environnement est modifié par l'exécution des deux commandes entre les appels à `ls()`.
+- **Modifiez** la ligne de commande `c("World","le Monde")` pour **créer un objet** `obj_b`?
 
 `@hint`
-- Here is the hint for this setup problem. 
-- It should get students 50% of the way to the correct answer.
-- So don't provide the answer, but don't just reiterate the instructions.
-- Typically one hint per instruction is a sensible amount.
+- Il s'agit simplement d'assigner le vecteur `c("World", "le Monde!")` à un objet `obj_b`!
 
 `@pre_exercise_code`
 ```{r}
@@ -34,15 +31,12 @@ The Instructions that follow should be in bullet point form with clear guidance 
 
 `@sample_code`
 ```{r}
-# Your
-# sample
-# code
-# should
-# be
-# ideally
-# 10 lines or less,
-# with a max
-# of 16 lines.
+ls()
+
+obj_a <- c("Hello","Bonjour")
+obj_b <- c("World","le Monde!")
+
+ls()
 ```
 
 `@solution`
@@ -55,6 +49,8 @@ The Instructions that follow should be in bullet point form with clear guidance 
 
 `@sct`
 ```{r}
-# Update this to something more informative.
-success_msg("Some praise! Then reinforce a learning objective from the exercise.")
+test_object("obj_a")
+test_object("obj_b")
+test_error()
+success_msg("Vous savez 
 ```
