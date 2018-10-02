@@ -7,10 +7,10 @@ description: 'This is a template chapter.'
 
 ```yaml
 type: NormalExercise
+key: 94a29f0519
 lang: r
 xp: 100
 skills: 1
-key: 94a29f0519
 ```
 
 This is the Context. It should help provide students with the background information needed.
