@@ -195,10 +195,10 @@ Complétez le code pour réarranger les tableaux par
 - **poids**
 - **sexe**
 - **sexe et âge**
-- **sexe et âge décroissant**
+- **sexe** et **âge décroissant**
 
 `@hint`
-
+Pensez à utiliser la fonction auxiliaire `desc()` pour ranger les valeurs dans l'ordre décroissant.
 
 `@pre_exercise_code`
 ```{r}
@@ -236,4 +236,59 @@ ex()%>%check_object("data_par_sexe")%>%check_equal()
 ex()%>%check_object("data_par_sexe_et_age")%>%check_equal()
 ex()%>%check_object("data_par_sexe_et_age_decr")%>%check_equal()
 success_msg("Oui! Vous allez pouvoir bien ranger vos données...")
+```
+
+---
+
+## Transformer le tableau
+
+```yaml
+type: NormalExercise
+key: cf99649667
+xp: 100
+```
+
+La fonction **mutate()** permet de **créer et ajouter de nouvelles variables** à un tableau.
+
+Le tableau `catdata` et les packages `dplyr` et `stringr` ont déjà été chargés dans l'environnement ci-contre.
+
+`@instructions`
+Complétez le code pour créer de nouvelles variables:
+
+- dans `data_plus_age_humain`, la nouvelle variable **age_humain** sera l'"âge équivalent humain" du chat (i.e. son âge multiplié par 7).
+- dans `data_plus_hair`, la nouvelle variable **hair** correspondra à la couleur et au type de pelage (par exemple, pour un chat "red",et "tabby", `hair` aura pour valeur "red_tabby"). Pour cela, vous pourrez utiliser la fonction `str_c()` du package `stringr` qui concatène des chaînes de caractère.
+
+`@hint`
+
+
+`@pre_exercise_code`
+```{r}
+catdata=readr::read_delim("http://perso.ens-lyon.fr/lise.vaudor/Rdata/Graphiques_avec_ggplot2/catdata.csv",sep=";")
+library(dplyr)
+```
+
+`@sample_code`
+```{r}
+data_plus_age_humain <- ______________________
+
+# juste pour vous montrer comment fonctionne la fonction `str_c()`
+vdemo=c("pouet","coin")
+str_c(vdemo,"-",vdemo)
+
+data_plus_hair <- mutate(catdata,hair=_____)
+```
+
+`@solution`
+```{r}
+data_plus_age_humain <- mutate(catdata,age_humain=age*7)
+
+data_plus_hair <- mutate(catdata,hair=paste(haircolor,hairpattern,sep="_"))
+```
+
+`@sct`
+```{r}
+ex()%>%check_error()
+ex()%>%check_object("data_plus_hair")%>%check_equal()
+ex()%>%check_object("data_plus_age_humain")%>%check_equal()
+success_msg("Oui... avez-vous vu le chat qui a 119 ans-humains?")
 ```
