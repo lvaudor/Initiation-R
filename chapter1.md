@@ -48,7 +48,7 @@ ls()
 `@sct`
 ```{r}
 ex()%>%check_error()
-ex()check_object("obj_a")
+ex()%>%check_object("obj_a")
 check_object("obj_b")
 success_msg("Vous savez maintenant créer des objets et modifier l'environnement (et faire un exercice sur Datacamp)!")
 ```
@@ -118,7 +118,7 @@ Avez-vous bien précisé le nom de famille de Jon, et l'âge des enfants Stark e
 
 `@pre_exercise_code`
 ```{r}
-
+library(dplyr)
 ```
 
 `@sample_code`
@@ -207,6 +207,7 @@ L'élément `cri` est un vecteur => comment récupérer les éléments 6 et 7 d'
 
 `@pre_exercise_code`
 ```{r}
+library(dplyr)
 ma_liste=list(fruits=c("bananes","pommes","cerises","poires","abricots"),
               legumes=c("chou-fleur","poivron","carotte","poireau","brocoli","haricot","fenouil"),
               feculents=c("riz","pâtes","pommes de terre","semoule"))
