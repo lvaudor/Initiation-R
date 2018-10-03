@@ -47,9 +47,9 @@ ls()
 
 `@sct`
 ```{r}
-test_object("obj_a")
-test_object("obj_b")
-test_error()
+ex()%>%check_error()
+ex()check_object("obj_a")
+check_object("obj_b")
 success_msg("Vous savez maintenant créer des objets et modifier l'environnement (et faire un exercice sur Datacamp)!")
 ```
 
@@ -100,7 +100,7 @@ test_mc(correct = 2,
 
 ---
 
-## Insert exercise title here
+## Création de tibble
 
 ```yaml
 type: NormalExercise
@@ -178,7 +178,66 @@ vecvilles <- sample(vec,1000,replace=T)
 ```{r}
 test_mc(correct = 4,
         feedback_msgs = c("Non!",
-                          "Non",
-                          "Non",
-                          "Oui, c'était bien Paris! Retenez bien l'usage des crochets [...] pour accéder à certains éléments de vecteurs.","Non"))
+                          "Non!",
+                          "Non!",
+                          "Oui, c'était bien Paris! Retenez bien l'usage des crochets [...] pour accéder à certains éléments de vecteurs.",
+                          "Non!"))
+```
+
+---
+
+## Indexation d'une liste/d'une table
+
+```yaml
+type: NormalExercise
+key: 27772afd1d
+xp: 100
+```
+
+L'environnement contient deux objets: une liste `ma_liste` et une tibble `ma_tibble`.
+
+`@instructions`
+En utilisant le système d'indexation des objets de type liste et tibble,
+- récupérez le 4ème élément de l'élement `fruits` dans l'objet `ma_liste` 
+- récupérez les 6ème et 7ème éléments de la colonne `cri` dans l'objet ma_tibble
+
+`@hint`
+L'élément `fruits` est un vecteur => comment récupérer le quatrième élément d'un vecteur?
+L'élément `cri` est un vecteur => comment récupérer les éléments 6 et 7 d'un vecteur?
+
+`@pre_exercise_code`
+```{r}
+ma_liste=list(fruits=c("bananes","pommes","cerises","poires","abricots"),
+              legumes=c("chou-fleur","poivron","carotte","poireau","brocoli","haricot","fenouil"),
+              feculents=c("riz","pâtes","pommes de terre","semoule"))
+ma_tibble=tibble(animal=c("chat","chien","âne","cheval","coq","cochon","vache"),
+                 cri=c("miaou!","ouaf-ouaf!","hi-han!","hiihiiiihiiiii!","cocoricoo!","grouik!","meuh!"))
+```
+
+`@sample_code`
+```{r}
+quatrieme_fruit <- ...
+quatrieme_fruit
+
+sixieme_et_septieme_cris <- ....
+sixieme_et_septieme_cris
+
+
+```
+
+`@solution`
+```{r}
+quatrieme_fruit <- ma_liste$fruits[4]
+quatrieme_fruit
+
+sixieme_et_septieme_cris <- ma_tibble$cri[6:7]
+sixieme_et_septieme_cris
+
+```
+
+`@sct`
+```{r}
+ex()%>%check_error()
+ex()%>%check_object("quatrieme_value")%>%check_equal()
+ex()%>%check_object("sixieme_et_septieme_cris")%>%check_equal()
 ```
