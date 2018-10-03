@@ -18,7 +18,7 @@ Le script ci-contre crée deux vecteurs `pommes` et `bananes`.
 **Complétez le script** pour créer un nouveau vecteur `fruits` qui correspond à la somme (élément par élément) des pommes et des bananes.
 
 `@hint`
-Ne réécrivez pas le vecteur `fruits` à la main! Il faut simplement ici réaliser une opération arithmétique simple sur les vecteurs `pommes` et `bananes`...
+Ne réécrivez pas le vecteur `fruits` à la main! Il faut simplement ici réaliser une opération arithmétique simple à l'aide des vecteurs `pommes` et `bananes`...
 
 `@pre_exercise_code`
 ```{r}
