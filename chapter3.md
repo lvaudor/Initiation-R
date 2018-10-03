@@ -259,7 +259,7 @@ Complétez le code pour créer de nouvelles variables:
 - dans `data_plus_hair`, la nouvelle variable **hair** correspondra à la couleur et au type de pelage (par exemple, pour un chat "red",et "tabby", `hair` aura pour valeur "red_tabby"). Pour cela, vous pourrez utiliser la fonction `str_c()` du package `stringr` qui concatène des chaînes de caractère.
 
 `@hint`
-
+Avez-vous utilisé le bon opérateur (*) pour multiplier l'âge par 7? et le bon séparateur ("_") pour séparer haircolor et hairpattern?
 
 `@pre_exercise_code`
 ```{r}
@@ -282,7 +282,7 @@ data_plus_hair <- mutate(catdata,hair=_____)
 ```{r}
 data_plus_age_humain <- mutate(catdata,age_humain=age*7)
 
-data_plus_hair <- mutate(catdata,hair=paste(haircolor,hairpattern,sep="_"))
+data_plus_hair <- mutate(catdata,hair=str_c(haircolor,"-",hairpattern))
 ```
 
 `@sct`
@@ -291,4 +291,183 @@ ex()%>%check_error()
 ex()%>%check_object("data_plus_hair")%>%check_equal()
 ex()%>%check_object("data_plus_age_humain")%>%check_equal()
 success_msg("Oui... avez-vous vu le chat qui a 119 ans-humains?")
+```
+
+---
+
+## Résumer l'information
+
+```yaml
+type: NormalExercise
+key: 83d6e4bd52
+xp: 100
+```
+
+La fonction **summarise()** permet de **résumer** l'information contenue dans un tableau, éventuellement **groupe par groupe** (groupes définis à l'aide de la fonction auxiliaire **group_by()**). 
+
+Le tableau `catdata` et le package `dplyr` ont déjà été chargés dans l'environnement ci-contre.
+
+
+`@instructions`
+Complétez le code pour créer de nouveaux tableaux résumant une partie de l'information contenue dans `catdata`.
+
+`@hint`
+Pensez à la différence entre les fonctions auxiliaires `n()` et `n_distinct()`
+
+`@pre_exercise_code`
+```{r}
+catdata=readr::read_delim("http://perso.ens-lyon.fr/lise.vaudor/Rdata/Graphiques_avec_ggplot2/catdata.csv",sep=";")
+library(dplyr)
+```
+
+`@sample_code`
+```{r}
+moy <- summarise(catdata,
+                 moy_poids=_______,
+                 moy_age=_______)
+
+# groupes definis par sex et haircolor
+# calculer moyenne de poids et moyenne d'age
+moy_par_groupe <- _________(group_by(catdata,_________),
+                            moy_poids=__________,
+                            moy_age=________)
+
+# groupes definies par sex et haircolor, calculer le minimum et maximum de poids
+# calculer nombre total d'individus, calculer le nombre de motifs de poils (hairpattern) distincts dans ces groupes
+resume_par_groupe <- summarise(_______________________),
+                               min_poids=__________,
+                               max_poids=__________,
+                               nbre_individus=______,
+                               nbre_motifs=_________
+                               )
+```
+
+`@solution`
+```{r}
+moy <- summarise(catdata,
+                 moy_poids=mean(weight),
+                 moy_age=mean(age))
+
+# groupes definis par sex et haircolor
+# calculer moyenne de poids et moyenne d'age
+moy_par_groupe <- summarise(group_by(catdata,sex,haircolor),
+                            moy_poids=mean(weight),
+                            moy_age=mean(age))
+
+# groupes definies par sex et haircolor, calculer le minimum et maximum de poids
+# calculer nombre total d'individus, calculer le nombre de motifs de poils (hairpattern) distincts dans ces groupes
+resume_par_groupe <- summarise(group_by(catdata,sex,haircolor),
+                               min_poids=min(weight),
+                               max_poids=max(weight),
+                               nbre_individus=n(),
+                               nbre_motifs=n_distinct(hairpattern)
+                               )
+```
+
+`@sct`
+```{r}
+ex()%>%check_error()
+ex()%>%check_object("moy")%>%check_equal()
+ex()%>%check_object("moy_par_groupe")%>%check_equal()
+ex()%>%check_object("resume_par_groupe")%>%check_equal()
+success_msg("Bien vu! Puissante, la fonction `summarise`, non?")
+```
+
+---
+
+## Chaînage
+
+```yaml
+type: PureMultipleChoiceExercise
+key: 6824e008cb
+xp: 50
+```
+
+
+L'utilisation de l'opérateur pipe (**%>%**) permet d'**enchaîner plusieurs opérations** de `dplyr`.
+
+La table `catdata` compte 153 lignes et 6 colonnes, et comporte 18 chat roux qui mangent des croquettes. 
+
+**Sans exécuter le code suivant**, êtes vous capable de prédire quelle seront les **dimensions** du tableau `data` résultant de la commande suivante?
+
+`data <- catdata %>%
+   select(sex,haircolor,weight,foodtype) %>%
+   filter(haircolor=="red",foodtype=="dry")
+`
+
+`@hint`
+Réfléchissez bien à l'enchaînement des opérations... on prend catdata, puis on **sélectionne** les variables `sex`, `haircolor`,`weight` et `foodtype`, puis on **filtre** les lignes pour ne garder que les chats roux qui mangent des croquettes
+
+`@possible_answers`
+- 135 lignes et 4 colonnes
+- 18 lignes et 6 colonnes
+- 18 lignes et 4 colonnes
+- 153 lignes et 4 colonnes
+
+`@feedback`
+test_mc(correct = 3,
+        feedback_msgs = c("Non! Que fait `filter`?...",
+                          "Non! Que fait `select`?...",
+                          "Oui, tout à fait!",
+                          "Non! Que fait `filter`?..."))
+
+---
+
+## Insert exercise title here
+
+```yaml
+type: NormalExercise
+key: 63bb45aae1
+xp: 100
+```
+
+Le tableau `catdata` et le package `dplyr` ont déjà été chargés dans l'environnement ci-contre.
+
+`@instructions`
+Complétez le script ci-contre:
+
+- pour construire `dat1`, on prend `catdata`, puis on **filtre** pour ne garder que les chats noirs, puis on **sélectionne** les colonnes pour ne garder que `haircolor`, `weight`, et `age`, puis on **arrange** la table par ordre décroissant de `weight` et ordre croissant de `age`.
+- pour construire `dat2`, on prend `catdata`, puis on ne **filtre** pour ne garder que les chats qui pèsent strictement moins de 5 kilos, puis on **groupe** par couleur de poil, puis on **résume** l'information en calculant `moy_age`, la moyenne d'âge par groupe.
+
+`@hint`
+Pensez qu'en utilisant les %>% vous n'avez plus besoin de passer de table en premier argument...
+
+`@pre_exercise_code`
+```{r}
+catdata=readr::read_delim("http://perso.ens-lyon.fr/lise.vaudor/Rdata/Graphiques_avec_ggplot2/catdata.csv",sep=";")
+library(dplyr)
+```
+
+`@sample_code`
+```{r}
+dat1 <- catdata %>%
+  ______(______) %>%
+  ______(______) %>%
+  ______(______)
+
+dat2 <- catdata %>%
+  ______(______) %>%
+  ______(______) %>%
+  ______(______)
+```
+
+`@solution`
+```{r}
+dat1 <- catdata %>%
+  filter(haircolor=="black") %>%
+  select(haircolor,weight,age) %>%
+  arrange(desc(weight), age)
+
+dat2 <- catdata %>%
+  filter(weight<5) %>%
+  group_by(haircolor) %>%
+  summarise(moy_age=mean(age))
+```
+
+`@sct`
+```{r}
+ex()%>%check_error()
+ex()%>%check_object("dat1")%>%check_equal()
+ex()%>%check_object("dat2")%>%check_equal()
+success_msg("Bravo! Vous voilà prêts à triturer vos tableaux de données à qui mieux-mieux!")
 ```
