@@ -58,9 +58,10 @@ xp: 100
 
 La fonction **select()** permet de **sélectionner des colonnes** d'un tableau de données.
 
-`@instructions`
 Le tableau `catdata` et le package `dplyr` ont déjà été chargés dans l'environnement ci-contre.
 
+`@instructions`
+Examinez la table `catdata`.
 Complétez le code pour sélectionner :
 
 - les variables `weight`, `foodtype`, et `age`
@@ -73,7 +74,7 @@ Pour dire "de haircolor à weight", vous pouvez utiliser la notation suivante: `
 
 `@pre_exercise_code`
 ```{r}
-catdata=read.table("http://perso.ens-lyon.fr/lise.vaudor/Rdata/Graphiques_avec_ggplot2/catdata.csv", sep=";", header=T)
+catdata=readr::read_delim("http://perso.ens-lyon.fr/lise.vaudor/Rdata/Graphiques_avec_ggplot2/catdata.csv",sep=";")
 library(dplyr)
 ```
 
@@ -117,4 +118,59 @@ ex()%>%check_object("dat2")%>%check_equal()
 ex()%>%check_object("dat3")%>%check_equal()
 ex()%>%check_object("dat4")%>%check_equal()
 success_msg("C'est ça! Vous avez compris le truc pour sélectionner facilement des variables de votre jeu de données.")
+```
+
+---
+
+## Filtrer des lignes
+
+```yaml
+type: NormalExercise
+key: 20ab0a73fc
+xp: 100
+```
+
+Le tableau `catdata` et le package `dplyr` ont déjà été chargés dans l'environnement ci-contre.
+
+
+`@instructions`
+Examinez la table `catdata`.
+Complétez le code pour filtrer les lignes et ne garder que:
+
+`@hint`
+Complétez le code pour filtrer les lignes et ne garder que:
+
+- les chats dont le **poil est roux** (`data_roux`)
+- les chats **particulièrement gros** (7 kilos ou plus) ou **particulièrement vieux** (15 ans ou plus) (`data_gros_ou_vieux`)
+
+`@pre_exercise_code`
+```{r}
+catdata=readr::read_delim("http://perso.ens-lyon.fr/lise.vaudor/Rdata/Graphiques_avec_ggplot2/catdata.csv",sep=";")
+library(dplyr)
+```
+
+`@sample_code`
+```{r}
+data_roux <- _____
+data_roux
+
+data_gros_ou_vieux <- _____
+data_gros_ou_vieux
+```
+
+`@solution`
+```{r}
+data_roux <- filter(catdata,haircolor=="red")
+data_roux
+
+data_gros_ou_vieux <- filter(catdata, weight>=7 | age>=15)
+data_gros_ou_vieux
+```
+
+`@sct`
+```{r}
+ex()%>%check_error()
+ex()%>%check_object("data_roux")%>%check_equal()
+ex()%>%check_object("data_gros_ou_vieux")%>%check_equal()
+success_msg("Bravo! Vous savez maintenant filtrer les lignes d'un jeu de données.")
 ```
