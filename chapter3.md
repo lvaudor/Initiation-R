@@ -174,3 +174,66 @@ ex()%>%check_object("data_roux")%>%check_equal()
 ex()%>%check_object("data_gros_ou_vieux")%>%check_equal()
 success_msg("Bravo! Vous savez maintenant filtrer les lignes d'un jeu de données.")
 ```
+
+---
+
+## Arranger les lignes
+
+```yaml
+type: NormalExercise
+key: aa093b5f55
+xp: 100
+```
+
+La fonction **arrange()** permet de **réordonner** les lignes d'un tableau. 
+
+Le tableau `catdata` et le package `dplyr` ont déjà été chargés dans l'environnement ci-contre.
+
+`@instructions`
+Complétez le code pour réarranger les tableaux par 
+
+- **poids**
+- **sexe**
+- **sexe et âge**
+- **sexe et âge décroissant**
+
+`@hint`
+
+
+`@pre_exercise_code`
+```{r}
+catdata=readr::read_delim("http://perso.ens-lyon.fr/lise.vaudor/Rdata/Graphiques_avec_ggplot2/catdata.csv",sep=";")
+library(dplyr)
+```
+
+`@sample_code`
+```{r}
+data_par_poids <- arrange(catdata,_____)
+
+data_par_sexe  <- arrange(_____________)
+
+data_par_sexe_et_age <-  _____(_________________)
+
+data_par_sexe_et_age_decr <- ___________________________
+```
+
+`@solution`
+```{r}
+data_par_poids <- arrange(catdata,weight)
+
+data_par_sexe <- arrange(catdata,sex)
+
+data_par_sexe_et_age <- arrange(catdata,sex,age)
+
+data_par_sexe_et_age_decr <- arrange(catdata,sex,desc(age))
+```
+
+`@sct`
+```{r}
+ex()%>%check_error()
+ex()%>%check_object("data_par_poids")%>%check_equal()
+ex()%>%check_object("data_par_sexe")%>%check_equal()
+ex()%>%check_object("data_par_sexe_et_age")%>%check_equal()
+ex()%>%check_object("data_par_sexe_et_age_decr")%>%check_equal()
+success_msg("Oui! Vous allez pouvoir bien ranger vos données...")
+```
