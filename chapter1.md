@@ -1,6 +1,6 @@
 ---
 title: 'Objets de base'
-description: "Ces exercices visent a vous familiariser avec le fonctionnement de R, les objets, l'environnement, etc.\n\nhttp://perso.ens-lyon.fr/lise.vaudor/Supports_formation/startR_1_objets_de_base.html"
+description: "Ces exercices visent a vous familiariser avec le fonctionnement de R, les objets, l'environnement, etc.\n\n<a href=\"http://perso.ens-lyon.fr/lise.vaudor/Supports_formation/startR_1_objets_de_base.html\" target=\"_blank\"> Lien vers les diapos de cours </a>"
 ---
 
 ## Assignation
@@ -108,10 +108,10 @@ key: dac24444d5
 xp: 100
 ```
 
-Créez la tibble `starks` en précisant le **nom de famille de Jon** (à savoir "Snow") et en complétant le code de sorte que la table contienne **une variable "Age"** (numérique) correspondant aux âges des enfants Stark (respectivement 15, 14, 11, 9, 7 et 3 ans).
+
 
 `@instructions`
-
+Créez la tibble `starks` en précisant le **nom de famille de Jon** (à savoir "Snow") et en complétant le code de sorte que la table contienne **une variable "Age"** (numérique) correspondant aux âges des enfants Stark (respectivement 15, 14, 11, 9, 7 et 3 ans).
 
 `@hint`
 Avez-vous bien précisé le nom de famille de Jon, et l'âge des enfants Stark en utilisant le bon type de variable (caractère pour les noms de famille, numérique pour l'âge)?

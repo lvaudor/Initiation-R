@@ -1,6 +1,6 @@
 ---
 title: 'Opérateurs et fonctions'
-description: "Ces exercices visent a vous familiariser avec l'utilisation des operateurs et des fonctions.\n\nhttp://perso.ens-lyon.fr/lise.vaudor/Supports_formation/startR_2_operateurs_et_fonctions.html\n"
+description: "Ces exercices visent a vous familiariser avec l'utilisation des operateurs et des fonctions.\n\n<a href=\"http://perso.ens-lyon.fr/lise.vaudor/Supports_formation/startR_2_operateurs_et_fonctions.html\" target=\"_blank\"> Lien vers les diapos de cours </a>\n"
 ---
 
 ## Opérateurs arithmétiques
