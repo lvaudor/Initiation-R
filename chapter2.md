@@ -11,7 +11,6 @@ key: d5f0836347
 xp: 100
 ```
 
-
 Le script ci-contre crée deux vecteurs `pommes` et `bananes`. 
 
 `@instructions`
@@ -44,3 +43,75 @@ ex()%>%check_error()
 ex()%>%check_object("fruits")%>%check_equal()
 success_msg("Oui! Avez-vous remarqué comme NA+quelque chose donne NA?...")
 ```
+
+---
+
+## Insert exercise title here
+
+```yaml
+type: NormalExercise
+key: 6e612242a7
+xp: 100
+```
+
+
+
+`@instructions`
+
+
+`@hint`
+
+
+`@pre_exercise_code`
+```{r}
+
+```
+
+`@sample_code`
+```{r}
+
+```
+
+`@solution`
+```{r}
+
+```
+
+`@sct`
+```{r}
+
+```
+
+---
+
+## Insert exercise title here
+
+```yaml
+type: PureMultipleChoiceExercise
+key: c7aef84d29
+xp: 50
+```
+
+Sachant que
+`x<-33`
+
+Laquelle de ces propositions renvoie FALSE?
+
+`@hint`
+(prop1 & prop2) est vraie si les deux propositions sont vraies
+(prop1 | prop2) est vraie si au moins l'une des deux propositions est vraie...
+
+`@possible_answers`
+- x>10 | x>50
+- x>=30 & x<=1000
+- x>30 & x<10
+- x %in% c(11,22,33,44,55)
+- x<40
+
+`@feedback`
+ex()%>%check_mc(correct = 3,
+                feedback_msgs = c("Non, cette proposition est vraie",
+"Non, cette proposition est vraie",
+"Eh oui! on ne peut pas avoir à la fois x>30 et x<10 donc quelle que soit la valeur de x, cette proposition est forcément fausse!",
+"Non, cette proposition est vraie",
+"Non, cette proposition est vraie"))

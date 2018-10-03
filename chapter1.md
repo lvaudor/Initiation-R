@@ -91,11 +91,11 @@ vec4 <- seq(0,5,by=1)
 
 `@sct`
 ```{r}
-test_mc(correct = 2,
-        feedback_msgs = c("Raté! Il y a deux petits pièges...",
-                          "Oui, bravo! Avez-vous remarqué comme avec R il faut faire attention aux subtilités comme l'usage de guillemets?...",
-                          "Eh non... vec3 contient des éléments de type caractère...",
-                          "Non! 5 éléments entre 0 et 5, ça ne fait pas 0,1,2,3,4,5..."))
+ex()%>%check_mc(correct = 2,
+                feedback_msgs = c("Raté! Il y a deux petits pièges...",
+                                  "Oui, bravo! Avez-vous remarqué comme avec R il faut faire attention aux subtilités comme l'usage de guillemets?...",
+                                  "Eh non... vec3 contient des éléments de type caractère...",
+                                  "Non! 5 éléments entre 0 et 5, ça ne fait pas 0,1,2,3,4,5..."))				
 ```
 
 ---
@@ -176,7 +176,7 @@ vecvilles <- sample(vec,1000,replace=T)
 
 `@sct`
 ```{r}
-test_mc(correct = 4,
+ex()%>%check_mc(correct = 4,
         feedback_msgs = c("Non!",
                           "Non!",
                           "Non!",
