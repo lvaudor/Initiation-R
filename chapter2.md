@@ -46,45 +46,7 @@ success_msg("Oui! Avez-vous remarqué comme NA+quelque chose donne NA?...")
 
 ---
 
-## Insert exercise title here
-
-```yaml
-type: NormalExercise
-key: 6e612242a7
-xp: 100
-```
-
-
-
-`@instructions`
-
-
-`@hint`
-
-
-`@pre_exercise_code`
-```{r}
-
-```
-
-`@sample_code`
-```{r}
-
-```
-
-`@solution`
-```{r}
-
-```
-
-`@sct`
-```{r}
-
-```
-
----
-
-## Insert exercise title here
+## Opérateurs logiques
 
 ```yaml
 type: PureMultipleChoiceExercise
@@ -115,3 +77,49 @@ ex()%>%check_mc(correct = 3,
 "Eh oui! on ne peut pas avoir à la fois x>30 et x<10 donc quelle que soit la valeur de x, cette proposition est forcément fausse!",
 "Non, cette proposition est vraie",
 "Non, cette proposition est vraie"))
+
+---
+
+## Usage d'une fonction
+
+```yaml
+type: NormalExercise
+key: d8589b3bba
+xp: 100
+```
+
+L'environnement contient un vecteur `x`.
+
+`@instructions`
+Calculez la **moyenne**, la **variance**, et le **quantile d'ordre 90%** du vecteur x.
+
+`@hint`
+Avez-vous pensé à convertir la valeur 90% en une valeur comprise entre 0 et 1?
+
+`@pre_exercise_code`
+```{r}
+set.seed(33)
+x=rnorm(1000,3,2)
+```
+
+`@sample_code`
+```{r}
+moyenne <- ...
+variance <- ...
+quantile90p <- ...
+```
+
+`@solution`
+```{r}
+moyenne <- mean(x)
+variance <- var(x)
+quantile90p=quantile(x,0.9)
+```
+
+`@sct`
+```{r}
+ex()%>%check_error()
+ex()%>%check_object("moyenne")%>%check_equal()
+ex()%>%check_object("variance")%>%check_equal()
+ex()%>%check_object("quantile90p")%>%check_equal()
+```
