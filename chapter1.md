@@ -197,13 +197,13 @@ xp: 100
 L'environnement contient deux objets: une liste `ma_liste` et une tibble `ma_tibble`.
 
 `@instructions`
-En utilisant le système d'indexation des objets de type liste et tibble,
-- récupérez le 4ème élément de l'élement `fruits` dans l'objet `ma_liste` 
+En **utilisant le système d'indexation** des objets de type liste et tibble,
+- récupérez le 4ème élément de l'élément `fruits` dans l'objet `ma_liste` 
 - récupérez les 6ème et 7ème éléments de la colonne `cri` dans l'objet ma_tibble
 
 `@hint`
 L'élément `fruits` est un vecteur => comment récupérer le quatrième élément d'un vecteur?
-L'élément `cri` est un vecteur => comment récupérer les éléments 6 et 7 d'un vecteur?
+L'élément `cri` est un vecteur => comment récupérer les éléments 6 et 7 d'un _vecteur?_
 
 `@pre_exercise_code`
 ```{r}
@@ -221,8 +221,6 @@ quatrieme_fruit
 
 sixieme_et_septieme_cris <- ....
 sixieme_et_septieme_cris
-
-
 ```
 
 `@solution`
@@ -232,7 +230,6 @@ quatrieme_fruit
 
 sixieme_et_septieme_cris <- ma_tibble$cri[6:7]
 sixieme_et_septieme_cris
-
 ```
 
 `@sct`
