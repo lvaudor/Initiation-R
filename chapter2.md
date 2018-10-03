@@ -179,7 +179,7 @@ success_msg("Très bien! Si l'on est assez facilement au clair sur ce que fait l
 
 ---
 
-## Insert exercise title here
+## Charger un package
 
 ```yaml
 type: NormalExercise
