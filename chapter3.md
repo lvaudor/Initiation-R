@@ -13,7 +13,6 @@ xp: 100
 
 Le tableau **catdata** est **disponible en ligne à l'adresse indiquée dans le script ci-contre**.
 
-
 `@instructions`
 Utilisez la fonction `read_csv()` ou read_delim()` (du package `readr`) pour lire cette table et assignez-la à un objet `catdata`
 
@@ -131,7 +130,6 @@ xp: 100
 ```
 
 Le tableau `catdata` et le package `dplyr` ont déjà été chargés dans l'environnement ci-contre.
-
 
 `@instructions`
 Examinez la table `catdata`.
@@ -307,7 +305,6 @@ La fonction **summarise()** permet de **résumer** l'information contenue dans u
 
 Le tableau `catdata` et le package `dplyr` ont déjà été chargés dans l'environnement ci-contre.
 
-
 `@instructions`
 Complétez le code pour créer de nouveaux tableaux résumant une partie de l'information contenue dans `catdata`.
 
@@ -382,7 +379,6 @@ type: PureMultipleChoiceExercise
 key: 6824e008cb
 xp: 50
 ```
-
 
 L'utilisation de l'opérateur pipe (**%>%**) permet d'**enchaîner plusieurs opérations** de `dplyr`.
 

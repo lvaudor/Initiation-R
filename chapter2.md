@@ -11,7 +11,7 @@ key: d5f0836347
 xp: 100
 ```
 
-Le script ci-contre crée deux vecteurs `pommes` et `bananes`. 
+Le script ci-contre crée deux vecteurs `pommes` et `bananes`.
 
 `@instructions`
 **Complétez le script** pour créer un nouveau vecteur `fruits` qui correspond à la somme (élément par élément) des pommes et des bananes.
@@ -134,10 +134,9 @@ key: 66ff3f31e9
 xp: 100
 ```
 
-
 La fonction **mean()** renvoie la moyenne d'un vecteur. 
 
-L'existence d'un **élément manquant (NA)** dans le vecteur cause le renvoi de **NA** comme résultat. 
+L'existence d'un **élément manquant (NA)** dans le vecteur cause le renvoi de **NA** comme résultat.
 
 `@instructions`
 Un des arguments de `mean()` permet de changer ce comportement pour renvoyer la moyenne du vecteur **en omettant les NA**. **Trouvez le nom de cet argument** en consultant l'aide de la fonction et **complétez** la deuxième commande (ci-contre) pour calculer `m2`.
