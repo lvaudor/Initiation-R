@@ -17,10 +17,10 @@ La fonction **ls()** permet d'afficher l'**ensemble des objets disponibles dans 
 
 `@instructions`
 - Exécutez le code ci-contre et voyez comment l'environnement est modifié par l'exécution des deux commandes entre les appels à `ls()`.
-- **Modifiez** la ligne de commande `c("World","le Monde")` pour **créer un objet** `obj_b`?
+- **Modifiez** la ligne de commande `c("pouet-pouet","tut-tut")` pour **créer un objet** `obj_b` correspondant à ce vecteur
 
 `@hint`
-- Il s'agit simplement d'assigner le vecteur `c("World", "le Monde!")` à un objet `obj_b`!
+- Il s'agit simplement d'**assigner** le vecteur à un objet `obj_b`!
 
 `@pre_exercise_code`
 ```{r}
@@ -31,25 +31,27 @@ La fonction **ls()** permet d'afficher l'**ensemble des objets disponibles dans 
 ```{r}
 ls()
 
-obj_a <- c("Hello","Bonjour")
-obj_b <- c("World","le Monde!")
+obj_a <- c("coin-coin","ouaf-ouaf")
+c("pouet-pouet","tut-tut")
 
 ls()
 ```
 
 `@solution`
 ```{r}
-# Answer goes here
-# Make sure to match the comments with your sample code
-# to help students see the differences from solution
-# to given.
+ls()
+
+obj_a <- c("coin-coin","ouaf-ouaf")
+obj_b <- c("pouet-pouet","tut-tut")
+
+ls()
 ```
 
 `@sct`
 ```{r}
 ex()%>%check_error()
-ex()%>%check_object("obj_a")
-check_object("obj_b")
+ex()%>%check_object("obj_a")%>%check_equal()
+ex()%>%check_object("obj_b")%>%check_equal()
 success_msg("Vous savez maintenant créer des objets et modifier l'environnement (et faire un exercice sur Datacamp)!")
 ```
 
