@@ -113,7 +113,7 @@ ls()
 ex()%>%check_error()
 ex()%>%check_object("obj_a")%>%check_equal()
 ex()%>%check_object("obj_b")%>%check_equal()
-success_msg("Vous savez maintenant créer des objets et modifier l'environnement (et faire un exercice sur Datacamp)!")
+success_msg("Eh oui! Avant que vous fassiez la modification, le vecteur était créé à la volée, mais le résultat n'était pas 'stocké' dans l'environnement.")
 ```
 
 ---
