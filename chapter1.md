@@ -3,6 +3,67 @@ title: 'Objets de base'
 description: "Ces exercices visent a vous familiariser avec le fonctionnement de R, les objets, l'environnement, etc.\n\n<a href=\"http://perso.ens-lyon.fr/lise.vaudor/Supports_formation/startR_1_objets_de_base.html\" target=\"_blank\"> Lien vers les diapos de cours </a>"
 ---
 
+## Principe des exercices sur Datacamp
+
+```yaml
+type: NormalExercise
+key: 4c8005af10
+xp: 100
+```
+
+Cet exercice sert à vous montrer comment fonctionne la plateforme Datacamp...
+
+`@instructions`
+Ici, vous trouverez les consignes. Ici, imaginons que le but de l'exercice soit d'assigner la valeur 33 à l'objet a.
+
+En face, vous avez:
+
+- en haut un éditeur, et
+- en bas une console R. L'environnement peut déjà contenir un certain nombre d'objets (des jeux de données par exemple).
+
+Si vous ne parvenez pas à résoudre l'exercice, vous pouvez demander un indice, puis la solution (Take Hint puis Show Answer, ci-dessous)...
+
+`@hint`
+Avez-vous bien changé ___ en '33'?
+
+`@pre_exercise_code`
+```{r}
+
+```
+
+`@sample_code`
+```{r}
+# L'éditeur fonctionne (à peu de choses près) comme l'éditeur RStudio. Vous pouvez envoyer une ligne de code vers la console (en bas) en vous plaçant sur la ligne et en tapant Ctrl+Entrée sur votre clavier. Vous pouvez aussi envoyer l'ensemble de vos lignes de commandes en appuyant sur le bouton "Run code".
+
+# Dans la plupart des exercices quelques lignes de commandes seront fournies, et ce sera à vous de les compléter en fonction des instructions.
+
+a <- ___
+
+
+# Les évaluations d'exercice consistent parfois à vérifier que la valeur de certains objets que vous avez créés correspond à ce qu'on attend...
+# Essayez donc de ne pas changer leur nom au risque que la validation de votre exercice échoue...
+
+# Si vous avez effacé certaines portions du code fourni au début et que vous estimez que c'était une erreur, vous pouvez appuyer sur le bouton "flèche en rond" (**reset sample code**).
+
+
+#Une fois que vous avez complété et testé les lignes de commandes, et que vous pensez avoir la solution de l'exercice, vous pouvez **soumettre votre réponse** en appuyant sur le bouton "Submit". Un certain nombre de tests sont alors exécutés automatiquement pour déterminer si vous avez bien réussi l'exercice.
+
+```
+
+`@solution`
+```{r}
+a <- 33
+```
+
+`@sct`
+```{r}
+ex() %>% check_error()
+ex() %>% check_object("a") %>% check_equal()
+success_msg("Parfait! Vous allez pouvoir vous lancer dans les 'vrais' exercices...")
+```
+
+---
+
 ## Assignation
 
 ```yaml
