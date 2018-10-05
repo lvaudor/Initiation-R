@@ -21,7 +21,7 @@ Ne réécrivez pas le vecteur `fruits` à la main! Il faut simplement ici réali
 
 `@pre_exercise_code`
 ```{r}
-Ne réécrivez pas le vecteur `fruits` à la main! Il faut simplement ici réaliser une opération arithmétique simple sur les vecteurs `pommes` et `bananes`...
+
 ```
 
 `@sample_code`
@@ -171,7 +171,7 @@ m2 <- mean(vec, na.rm=T)
 ```{r}
 ex()%>%check_error()
 ex()%>%check_object("vec")
-ex()%>%check_object("m1", incorrect_msg="Ne touchez pas à la commande qui crée m1")
+ex()%>%check_object("m1")
 ex()%>%check_object("m2")
 success_msg("Très bien! Si l'on est assez facilement au clair sur ce que fait la fonction 'mean()', il y aura sans doute, à l'avenir, de nombreuses fonctions pour lesquelles vous aurez grand besoin de consulter l'aide!")
 ```
@@ -204,13 +204,13 @@ starks <- dplyr::tibble(FirstName=c("Robb","Jon","Sansa","Arya","Brandon","Ricko
 
 `@sample_code`
 ```{r}
-filter(starks, Lastname=="Stark")
+filter(starks, LastName=="Stark")
 ```
 
 `@solution`
 ```{r}
 library(dplyr)
-filter(starks, Lastname=="Stark")
+filter(starks, LastName=="Stark")
 ```
 
 `@sct`

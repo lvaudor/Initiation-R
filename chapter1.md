@@ -301,4 +301,5 @@ sixieme_et_septieme_cris
 ex()%>%check_error()
 ex()%>%check_object("quatrieme_fruit")%>%check_equal()
 ex()%>%check_object("sixieme_et_septieme_cris")%>%check_equal()
+success_msg("Bravo! Retenez l'usage des crochets `[...]` pour indexer les objets!")
 ```

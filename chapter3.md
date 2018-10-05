@@ -33,8 +33,8 @@ catdata
 
 `@solution`
 ```{r}
-catdata <- read_delim("http://perso.ens-lyon.fr/lise.vaudor/Rdata/Graphiques_avec_ggplot2/catdata.csv",
-                      delim=";")
+catdata <- readr::read_delim("http://perso.ens-lyon.fr/lise.vaudor/Rdata/Graphiques_avec_ggplot2/catdata.csv",
+                             delim=";")
 catdata
 ```
 
@@ -267,6 +267,7 @@ Avez-vous utilisé le bon opérateur (*) pour multiplier l'âge par 7? et le bon
 catdata=readr::read_delim("http://perso.ens-lyon.fr/lise.vaudor/Rdata/Graphiques_avec_ggplot2/catdata.csv",
                           delim=";")
 library(dplyr)
+library(stringr)
 ```
 
 `@sample_code`
@@ -409,7 +410,7 @@ Réfléchissez bien à l'enchaînement des opérations... on prend catdata, puis
 test_mc(correct = 3,
         feedback_msgs = c("Non! Que fait `filter`?...",
                           "Non! Que fait `select`?...",
-                          "Oui, tout à fait!",
+                          "Oui, tout a fait!",
                           "Non! Que fait `filter`?..."))
 
 ---
@@ -435,7 +436,8 @@ Pensez qu'en utilisant les %>% vous n'avez plus besoin de passer de table en pre
 
 `@pre_exercise_code`
 ```{r}
-catdata=readr::read_delim("http://perso.ens-lyon.fr/lise.vaudor/Rdata/Graphiques_avec_ggplot2/catdata.csv",sep=";")
+catdata=readr::read_delim("http://perso.ens-lyon.fr/lise.vaudor/Rdata/Graphiques_avec_ggplot2/catdata.csv",
+                          delim=";")
 library(dplyr)
 ```
 
