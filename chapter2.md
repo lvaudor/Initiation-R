@@ -196,7 +196,7 @@ La fonction `filter()` n'est pas connue car le package n'a pas été chargé... 
 
 `@pre_exercise_code`
 ```{r}
-starks <- tibble(FirstName=c("Robb","Jon","Sansa","Arya","Brandon","Rickon"),
+starks <- dplyr::tibble(FirstName=c("Robb","Jon","Sansa","Arya","Brandon","Rickon"),
                  LastName=c("Stark","Snow","Stark","Stark","Stark","Stark"),
                  Age=c(15,14,11,9,7,3),
                  Direwolf=c("Grey Wind","Ghost","Lady","Nymeria","Summer","Shaggydog"))

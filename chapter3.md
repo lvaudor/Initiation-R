@@ -73,7 +73,8 @@ Pour dire "de haircolor à weight", vous pouvez utiliser la notation suivante: `
 
 `@pre_exercise_code`
 ```{r}
-catdata=readr::read_delim("http://perso.ens-lyon.fr/lise.vaudor/Rdata/Graphiques_avec_ggplot2/catdata.csv",sep=";")
+catdata=readr::read_delim("http://perso.ens-lyon.fr/lise.vaudor/Rdata/Graphiques_avec_ggplot2/catdata.csv",
+                          delim=";")
 library(dplyr)
 ```
 
@@ -143,7 +144,8 @@ Complétez le code pour filtrer les lignes et ne garder que:
 
 `@pre_exercise_code`
 ```{r}
-catdata=readr::read_delim("http://perso.ens-lyon.fr/lise.vaudor/Rdata/Graphiques_avec_ggplot2/catdata.csv",sep=";")
+catdata=readr::read_delim("http://perso.ens-lyon.fr/lise.vaudor/Rdata/Graphiques_avec_ggplot2/catdata.csv",
+                          delim=";")
 library(dplyr)
 ```
 
@@ -200,7 +202,8 @@ Pensez à utiliser la fonction auxiliaire `desc()` pour ranger les valeurs dans 
 
 `@pre_exercise_code`
 ```{r}
-catdata=readr::read_delim("http://perso.ens-lyon.fr/lise.vaudor/Rdata/Graphiques_avec_ggplot2/catdata.csv",sep=";")
+catdata=readr::read_delim("http://perso.ens-lyon.fr/lise.vaudor/Rdata/Graphiques_avec_ggplot2/catdata.csv",
+                          delim=";")
 library(dplyr)
 ```
 
@@ -261,7 +264,8 @@ Avez-vous utilisé le bon opérateur (*) pour multiplier l'âge par 7? et le bon
 
 `@pre_exercise_code`
 ```{r}
-catdata=readr::read_delim("http://perso.ens-lyon.fr/lise.vaudor/Rdata/Graphiques_avec_ggplot2/catdata.csv",sep=";")
+catdata=readr::read_delim("http://perso.ens-lyon.fr/lise.vaudor/Rdata/Graphiques_avec_ggplot2/catdata.csv",
+                          delim=";")
 library(dplyr)
 ```
 
@@ -313,7 +317,8 @@ Pensez à la différence entre les fonctions auxiliaires `n()` et `n_distinct()`
 
 `@pre_exercise_code`
 ```{r}
-catdata=readr::read_delim("http://perso.ens-lyon.fr/lise.vaudor/Rdata/Graphiques_avec_ggplot2/catdata.csv",sep=";")
+catdata=readr::read_delim("http://perso.ens-lyon.fr/lise.vaudor/Rdata/Graphiques_avec_ggplot2/catdata.csv",
+                          delim=";")
 library(dplyr)
 ```
 
@@ -409,7 +414,7 @@ test_mc(correct = 3,
 
 ---
 
-## Insert exercise title here
+## Chaînage: on enchaîne, on enchaîne!
 
 ```yaml
 type: NormalExercise
