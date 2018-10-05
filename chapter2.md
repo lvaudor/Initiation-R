@@ -49,19 +49,15 @@ success_msg("Oui! Avez-vous remarqué comme NA+quelque chose donne NA?...")
 ## Opérateurs logiques
 
 ```yaml
-type: PureMultipleChoiceExercise
-key: c7aef84d29
+type: MultipleChoiceExercise
+key: 19dc555de6
 xp: 50
 ```
 
 Sachant que
 `x<-33`
 
-Laquelle de ces propositions renvoie FALSE?
-
-`@hint`
-(prop1 & prop2) est vraie si les deux propositions sont vraies
-(prop1 | prop2) est vraie si au moins l'une des deux propositions est vraie...
+Laquelle de ces propositions renvoie FALSE? (Essayez de répondre sans exécuter le code!)
 
 `@possible_answers`
 - `x>10 | x>50`
@@ -70,13 +66,24 @@ Laquelle de ces propositions renvoie FALSE?
 - `x %in% c(11,22,33,44,55)`
 - `x<40`
 
-`@feedback`
-test_mc(correct = 3,
+`@hint`
+(prop1 & prop2) est vraie si les deux propositions sont vraies
+(prop1 | prop2) est vraie si au moins l'une des deux propositions est vraie...
+
+`@pre_exercise_code`
+```{r}
+
+```
+
+`@sct`
+```{r}
+ex()%>%check_mc(correct = 3,
          feedback_msgs = c("Non, cette proposition est vraie",
 "Non, cette proposition est vraie",
 "Eh oui! on ne peut pas avoir à la fois x>30 et x<10 donc quelle que soit la valeur de x, cette proposition est forcément fausse!",
 "Non, cette proposition est vraie",
 "Non, cette proposition est vraie"))
+```
 
 ---
 

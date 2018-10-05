@@ -381,8 +381,8 @@ success_msg("Bien vu! Puissante, la fonction `summarise`, non?")
 ## Chaînage
 
 ```yaml
-type: PureMultipleChoiceExercise
-key: 6824e008cb
+type: MultipleChoiceExercise
+key: 7ae7130b13
 xp: 50
 ```
 
@@ -397,21 +397,28 @@ La table `catdata` compte 153 lignes et 6 colonnes, et comporte 18 chat roux qui
    filter(haircolor=="red",foodtype=="dry")
 `
 
-`@hint`
-Réfléchissez bien à l'enchaînement des opérations... on prend catdata, puis on **sélectionne** les variables `sex`, `haircolor`,`weight` et `foodtype`, puis on **filtre** les lignes pour ne garder que les chats roux qui mangent des croquettes
-
 `@possible_answers`
 - 135 lignes et 4 colonnes
 - 18 lignes et 6 colonnes
 - 18 lignes et 4 colonnes
 - 153 lignes et 4 colonnes
 
-`@feedback`
-test_mc(correct = 3,
+`@hint`
+Réfléchissez bien à l'enchaînement des opérations... on prend catdata, puis on **sélectionne** les variables `sex`, `haircolor`,`weight` et `foodtype`, puis on **filtre** les lignes pour ne garder que les chats roux qui mangent des croquettes
+
+`@pre_exercise_code`
+```{r}
+
+```
+
+`@sct`
+```{r}
+ex()%>%check_mc(correct = 3,
         feedback_msgs = c("Non! Que fait `filter`?...",
                           "Non! Que fait `select`?...",
                           "Oui, tout a fait!",
                           "Non! Que fait `filter`?..."))
+```
 
 ---
 
