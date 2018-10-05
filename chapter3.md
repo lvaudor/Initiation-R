@@ -257,10 +257,10 @@ Le tableau `catdata` et les packages `dplyr` et `stringr` ont déjà été charg
 Complétez le code pour créer de nouvelles variables:
 
 - dans `data_plus_age_humain`, la nouvelle variable **age_humain** sera l'"âge équivalent humain" du chat (i.e. son âge multiplié par 7).
-- dans `data_plus_hair`, la nouvelle variable **hair** correspondra à la couleur et au type de pelage (par exemple, pour un chat "red",et "tabby", `hair` aura pour valeur "red_tabby"). Pour cela, vous pourrez utiliser la fonction `str_c()` du package `stringr` qui concatène des chaînes de caractère.
+- dans `data_plus_hair`, la nouvelle variable **hair** correspondra à la couleur et au type de pelage (par exemple, pour un chat "red",et "tabby", `hair` aura pour valeur "red-tabby"). Pour cela, vous pourrez utiliser la fonction `str_c()` du package `stringr` qui concatène des chaînes de caractère.
 
 `@hint`
-Avez-vous utilisé le bon opérateur (*) pour multiplier l'âge par 7? et le bon séparateur ("_") pour séparer haircolor et hairpattern?
+Avez-vous utilisé le bon opérateur (*) pour multiplier l'âge par 7? et le bon séparateur ("-") pour séparer haircolor et hairpattern?
 
 `@pre_exercise_code`
 ```{r}
