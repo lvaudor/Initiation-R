@@ -136,11 +136,11 @@ Le tableau `catdata` et le package `dplyr` ont déjà été chargés dans l'envi
 `@instructions`
 Examinez la table `catdata`.
 Complétez le code pour filtrer les lignes et ne garder que:
+- les chats dont le **poil est roux** (`data_roux`)
+- les chats **particulièrement gros** (7 kilos ou plus) ou **particulièrement vieux** (15 ans ou plus) (`data_gros_ou_vieux`)
 
 `@hint`
-Complétez le code pour filtrer les lignes et ne garder que
-1) les chats dont le **poil est roux** (`data_roux`)
-2) les chats **particulièrement gros** (7 kilos ou plus) ou **particulièrement vieux** (15 ans ou plus) (`data_gros_ou_vieux`)
+Avez-vous bien fait attention à la différence entre la comparaison stricte (< ou >) et la comparaison "ou égal" (>= ou <=)?
 
 `@pre_exercise_code`
 ```{r}
