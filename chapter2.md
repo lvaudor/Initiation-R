@@ -71,7 +71,7 @@ Laquelle de ces propositions renvoie FALSE?
 - `x<40`
 
 `@feedback`
-check_mc(correct = 3,
+test_mc(correct = 3,
          feedback_msgs = c("Non, cette proposition est vraie",
 "Non, cette proposition est vraie",
 "Eh oui! on ne peut pas avoir à la fois x>30 et x<10 donc quelle que soit la valeur de x, cette proposition est forcément fausse!",
