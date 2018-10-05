@@ -64,11 +64,11 @@ Laquelle de ces propositions renvoie FALSE?
 (prop1 | prop2) est vraie si au moins l'une des deux propositions est vraie...
 
 `@possible_answers`
-- x>10 | x>50
-- x>=30 & x<=1000
-- x>30 & x<10
-- x %in% c(11,22,33,44,55)
-- x<40
+- `x>10 | x>50`
+- `x>=30 & x<=1000`
+- `x>30 & x<10`
+- `x %in% c(11,22,33,44,55)`
+- `x<40`
 
 `@feedback`
 ex()%>%check_mc(correct = 3,

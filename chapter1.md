@@ -203,7 +203,7 @@ starks <- tibble(FirstName=c("Robb","Jon","Sansa","Arya","Brandon","Rickon"),
 `@sct`
 ```{r}
 ex()%>%check_error()
-ex()%>%test_object("starks")%>%check_equal()
+ex()%>%check_object("starks")%>%check_equal()
 ```
 
 ---
@@ -299,6 +299,6 @@ sixieme_et_septieme_cris
 `@sct`
 ```{r}
 ex()%>%check_error()
-ex()%>%check_object("quatrieme_value")%>%check_equal()
+ex()%>%check_object("quatrieme_fruit")%>%check_equal()
 ex()%>%check_object("sixieme_et_septieme_cris")%>%check_equal()
 ```
