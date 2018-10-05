@@ -27,6 +27,7 @@ Avez-vous repéré quel était le séparateur de colonne? il s'agit d'un ";". Da
 `@sample_code`
 ```{r}
 library(readr)
+path="http://perso.ens-lyon.fr/lise.vaudor/Rdata/Graphiques_avec_ggplot2/catdata.csv"
 catdata <- ...
 catdata
 ```
@@ -137,10 +138,9 @@ Examinez la table `catdata`.
 Complétez le code pour filtrer les lignes et ne garder que:
 
 `@hint`
-Complétez le code pour filtrer les lignes et ne garder que:
-
-- les chats dont le **poil est roux** (`data_roux`)
-- les chats **particulièrement gros** (7 kilos ou plus) ou **particulièrement vieux** (15 ans ou plus) (`data_gros_ou_vieux`)
+Complétez le code pour filtrer les lignes et ne garder que
+1) les chats dont le **poil est roux** (`data_roux`)
+2) les chats **particulièrement gros** (7 kilos ou plus) ou **particulièrement vieux** (15 ans ou plus) (`data_gros_ou_vieux`)
 
 `@pre_exercise_code`
 ```{r}
