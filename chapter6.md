@@ -1,6 +1,6 @@
 ---
 title: 'GRAPHIQUES: PARAMETRAGE FIN'
-description: ""
+description: 'Ces exercices visent a vous apprendre à paramétrer de manière plus fine les axes et échelles associés à vos graphiques'
 ---
 
 ## Etiquettes et transformation d'axes
@@ -120,7 +120,7 @@ Il s'agit de
 - **modifier l'échelle colorée** pour que les prix **les plus bas** correspondent à la couleur **jaune** et les prix **les plus hauts** à la couleur **bleue**.
 
 `@hint`
-
+Avez-vous bien spécifié le bon thème (`theme_minimal()`) et utilisé la fonction `scale_color_gradient()`?
 
 `@pre_exercise_code`
 ```{r}
@@ -135,15 +135,25 @@ plot(p)
 
 `@sample_code`
 ```{r}
-
+p <-ggplot(diamonds, aes(x=cut, y=carat,color=price))+
+  geom_jitter() +
+  __________()+
+  __________(_______)
+plot(p)
 ```
 
 `@solution`
 ```{r}
-
+p <-ggplot(diamonds, aes(x=cut, y=carat,color=price))+
+  geom_jitter() +
+  theme_minimal()+
+  scale_color_gradient(low="yellow",high="blue")
+plot(p)
 ```
 
 `@sct`
 ```{r}
-
+ex()%>%check_error()
+ex()%>%check_ggplot(exact_aes=TRUE, exact_geom=TRUE, exact_scale=TRUE)
+ex()%>%check_function("theme_minimal")
 ```
