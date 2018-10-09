@@ -1,0 +1,149 @@
+---
+title: 'GRAPHIQUES: PARAMETRAGE FIN'
+description: ""
+---
+
+## Etiquettes et transformation d'axes
+
+```yaml
+type: NormalExercise
+key: cd89155d0f
+xp: 100
+```
+
+`ggplot2` et `diamonds` ont déjà été chargés.
+
+`@instructions`
+**Modifiez** le code ci-contre pour que: 
+
+- les **étiquettes d'axes** soient "coupe" (en x) et "prix" (en y)
+- l'**échelle des y** soient transformée par une **transformation log10**
+- les **valeurs de l'axe x** soient traduites (en "Correcte","Bonne","Tres bonne","Premium","Ideale")
+
+`@hint`
+Avez-vous bien utilisé 
+
+- la fonction `labs` pour les **étiquettes x et y**
+- la fonction `scale_y_truc()` (remplacez `truc` par la formule appropriée) pour la **transformation de l'axe y**
+- la fonction `scale_x_bidule()` (remplacez `bidule` par la formul appropriée) pour la **transformation de l'axe x**
+
+**Consultez l'antisèche ggplot2!!!**
+
+`@pre_exercise_code`
+```{r}
+require(ggplot2)
+data(diamonds)
+```
+
+`@sample_code`
+```{r}
+p <- ggplot(diamonds, aes(x=cut, y=price)) +
+  geom_boxplot(fill="pink") +
+  _______ +
+  _______ +
+  _______
+plot(p)
+```
+
+`@solution`
+```{r}
+p <- ggplot(diamonds, aes(x=cut, y=price)) +
+  geom_boxplot(fill="pink") +
+  labs(x="coupe",y="prix") +
+  scale_y_log10() +
+  scale_x_discrete(labels=c("Correcte","Bonne","Tres bonne","Premium","Ideale"))
+plot(p)
+```
+
+`@sct`
+```{r}
+ex()%>%check_error()
+ex()%>%check_ggplot(index=1,exact_aes=TRUE, exact_geom=TRUE, check_scale=TRUE)
+success_msg("Oui! Vous savez maintenant customiser vos axes!!")
+```
+
+---
+
+## Echelles de couleurs
+
+```yaml
+type: MultipleChoiceExercise
+key: 237104581a
+xp: 50
+```
+
+Imaginons que je souhaite produire un **nuage de points** montrant `carat` en fonction de `cut`, en faisant **varier la couleur en fonction de `price`**. 
+
+**Quelle fonction** devrais-je utiliser pour éventuellement **modifier l'échelle colorée**? (consultez l'antisèche ggplot2!)
+
+`@possible_answers`
+- `scale_color_brewer()`
+- `scale_fill_brewer()`
+- `scale_color_gradient()`
+- `scale_fill_gradient()`
+
+`@hint`
+
+
+`@pre_exercise_code`
+```{r}
+
+```
+
+`@sct`
+```{r}
+ex()%>%check_mc(correct = 3,
+        feedback_msgs = c("Non, `brewer` s'applique à des échelles **discrètes**, or `price` est **continu**",
+                          "Non, car on s'intéresse à une couleur de **bordure** et non à une couleur de remplissage",
+                          "Oui, bravo! **Retenez cette solution** pour l'exercice suivant...",
+                          "Non, car on s'intéresse à une couleur de **bordure** et non à une couleur de remplissage"))
+```
+
+---
+
+## Thème et échelle de couleur
+
+```yaml
+type: NormalExercise
+key: 56d6e4a6c1
+xp: 100
+```
+
+`ggplot2` et `diamonds` ont déjà été chargés, et un graphique produit.
+
+`@instructions`
+Modifiez le code qui vous est fourni ci-contre pour **reproduire cette figure**. 
+
+Il s'agit de 
+
+- **modifier le thème** 
+- **modifier l'échelle colorée** pour que les prix **les plus bas** correspondent à la couleur **jaune** et les prix **les plus hauts** à la couleur **bleue**.
+
+`@hint`
+
+
+`@pre_exercise_code`
+```{r}
+require(ggplot2)
+data(diamonds)
+p <-ggplot(diamonds, aes(x=cut, y=carat,color=price))+
+  geom_jitter() +
+  theme_minimal()+
+  scale_color_gradient(low="yellow",high="blue")
+plot(p)
+```
+
+`@sample_code`
+```{r}
+
+```
+
+`@solution`
+```{r}
+
+```
+
+`@sct`
+```{r}
+
+```

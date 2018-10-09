@@ -307,8 +307,8 @@ plot(p)
 
 `@sct`
 ```{r}
-test_error()
-test_ggplot(index=1,exact_aes=TRUE, exact_geom=TRUE)
+ex()%>%check_error()
+ex()%>%check_ggplot(index=1,exact_aes=TRUE, exact_geom=TRUE)
 
 success_msg("Bravo! Vous êtes en bonne voie pour faire des graphiques vraiment sympas!...")
 ```
