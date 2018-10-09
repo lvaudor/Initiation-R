@@ -256,3 +256,59 @@ ex()%>%check_ggplot(index=3,exact_aes=TRUE, exact_geom=TRUE)
 
 success_msg("Bien joué! Quelle joie, vous allez pouvoir customiser tous vos graphiques en rose!")
 ```
+
+---
+
+## Superposer des geoms
+
+```yaml
+type: NormalExercise
+key: 6e4fcd9969
+xp: 100
+```
+
+`ggplot2` et `diamonds` ont déjà été chargés.
+
+`@instructions`
+**Complétez le code** pour représenter la variable `table` du jeu de données `diamonds` en **superposant** deux geoms:
+
+- un geom de type **histogram**, et de couleur de remplissage jaune
+- un geom de type **rug**
+
+`@hint`
+Avez-vous bien fait appel 
+
+- à la fonction `ggplot()` (pour créer le graphique), 
+- à `geom_histogram()` pour tracer l'histogramme,
+- à `geom_rug`  pour rajouter le "rug"?
+
+`@pre_exercise_code`
+```{r}
+require(ggplot2)
+require(dplyr)
+data(diamonds)
+```
+
+`@sample_code`
+```{r}
+p<-_____________________+
+  _______________+
+  ___________
+plot(p)
+```
+
+`@solution`
+```{r}
+p <- ggplot(diamonds, aes(x=table)) +
+  geom_histogram(fill="yellow") +
+  geom_rug()
+plot(p)
+```
+
+`@sct`
+```{r}
+test_error()
+test_ggplot(index=1,exact_aes=TRUE, exact_geom=TRUE)
+
+success_msg("Bravo! Vous êtes en bonne voie pour faire des graphiques vraiment sympas!...")
+```
