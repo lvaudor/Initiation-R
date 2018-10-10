@@ -124,7 +124,7 @@ Avez-vous bien spécifié le bon thème (`theme_minimal()`) et utilisé la fonct
 
 `@pre_exercise_code`
 ```{r}
-require(ggplot2)
+library(ggplot2)
 data(diamonds)
 p <-ggplot(diamonds, aes(x=cut, y=carat,color=price))+
   geom_jitter() +

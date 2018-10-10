@@ -68,10 +68,10 @@ plot(p3)
 
 `@sct`
 ```{r}
-test_error()
-test_ggplot(index=1, exact_aes=TRUE, exact_geom=TRUE)
-test_ggplot(index=2, exact_aes=TRUE, exact_geom=TRUE)
-test_ggplot(index=3, exact_aes=TRUE, exact_geom=TRUE)
+ex()%>%check_error()
+ex()%>%check_ggplot(index=1, exact_aes=TRUE, exact_geom=TRUE)
+ex()%>%check_ggplot(index=2, exact_aes=TRUE, exact_geom=TRUE)
+ex()%>%check_ggplot(index=3, exact_aes=TRUE, exact_geom=TRUE)
 
 success_msg("Très bien! En faisant du **mapping** vous ajoutez des informations supplémentaires à votre graphique uni ou bivarié...")
 ```
@@ -160,7 +160,7 @@ Portez attention à l'endroit où sont définies les esthétiques (dans `ggplot(
 
 `@sct`
 ```{r}
-test_mc(correct = 4,
+ex()%>%check_mc(correct = 4,
         feedback_msgs = c("Non, c'est la couleur de **bordure** des boxplots qui dépend de `cut`",
                           "Non, la couleur des rugs dépend de `cut`!",
                           "Non, la couleur de bordure des boxplots dépend de `cut`...",
