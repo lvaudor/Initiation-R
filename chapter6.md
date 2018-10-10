@@ -238,7 +238,6 @@ key: 6309643bfd
 xp: 50
 ```
 
-
 **Examinez** le code suivant (sans l'exécuter!):
 
 ```{r}
