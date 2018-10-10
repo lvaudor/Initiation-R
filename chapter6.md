@@ -1,6 +1,6 @@
 ---
-title: 'GRAPHIQUES: PARAMETRAGE FIN'
-description: 'Ces exercices visent a vous apprendre à paramétrer de manière plus fine les axes et échelles associés à vos graphiques'
+title: 'GRAPHIQUES: APPROFONDISSEMENT'
+description: 'Ces exercices visent a vous apprendre à paramétrer de manière plus fine les axes et échelles associés à vos graphiques, et vous montrent comment ajouter des informations statistiques ou des modeles de regression à vos graphiques'
 ---
 
 ## Etiquettes et transformation d'axes
@@ -166,4 +166,110 @@ fscalecol <- ex() %>% check_function("scale_color_gradient")
 fscalecol %>% check_arg("low") %>% check_equal()
 fscalecol %>% check_arg("high") %>% check_equal()
 success_msg("Bravo! C'est de toute beauté!")
+```
+
+---
+
+## Rajout d'un nuage de points montrant les moyennes
+
+```yaml
+type: NormalExercise
+key: 4afcf79a89
+xp: 100
+```
+
+`ggplot2` et `diamonds` ont déjà été chargés.
+
+`@instructions`
+**Complétez** le code ci-contre pour rajouter des **points bleus** montrant les **moyennes de prix** (donc moyennes de y) par coupe de diamant
+
+`@hint`
+
+
+`@pre_exercise_code`
+```{r}
+require(ggplot2)
+data(diamonds)
+```
+
+`@sample_code`
+```{r}
+df_moyprix <- diamonds %>%
+     .... %>%
+     ....
+
+p <- ggplot(diamonds, aes(x=cut, y=price)) +
+  geom_boxplot(fill="pink")+
+  geom_point(___________)
+plot(p)
+```
+
+`@solution`
+```{r}
+df_moyprix <- diamonds %>%
+     group_by(cut) %>%
+     summarise(moyprix=mean(price))
+
+p <- ggplot(diamonds, aes(x=cut, y=price)) +
+  geom_boxplot(fill="pink")+
+  geom_point(data=df_moyprix, aes(y=moyprix))
+plot(p)
+```
+
+`@sct`
+```{r}
+ex() %>% check_error()
+
+ex() %>% check_function("ggplot")
+fgeom <- ex() %>% check_function("geom_point")
+fgeom %>% check_arg("data") %>% check_equal()
+fgeom %>% check_arg("mapping") %>% check_equal()
+fgeom %>% check_arg("col") %>% check_equal()
+success_msg("Oui! Visiblement, le prix d'un diamant est peu corrélé à la perfection de sa coupe!")
+```
+
+---
+
+## Insert exercise title here
+
+```yaml
+type: MultipleChoiceExercise
+key: 6309643bfd
+xp: 50
+```
+
+
+**Examinez** le code suivant (sans l'exécuter!):
+
+```{r}
+p <- ggplot(diamonds, aes(x=carat, y=price)) +
+  geom_point(aes(color=cut), alpha=0.1)+
+  geom_smooth(method="lm", aes(linetype=clarity))
+plot(p)
+```
+
+Au vu de ces commandes, **combien de droites de régression** s'attendrait-on à voir sur le graphique correspondant?
+
+`@possible_answers`
+- 5, autant que de niveaux de `cut`
+- 8, autant que de niveaux de `clarity`
+- 1, i.e. un modèle global pour l'ensemble des données
+- 40, i.e. le nombre de niveaux de `cut` multiplié par le nombre de niveaux de `clarity`
+
+`@hint`
+`cut` ne joue que sur le `geom_point()` et non sur le graphique dans son ensemble...
+
+`@pre_exercise_code`
+```{r}
+
+```
+
+`@sct`
+```{r}
+ex()%>%check_mc(correct = 2,
+        feedback_msgs = c("Non, `cut` ne joue que sur la couleur des points",
+                          "Oui! 8 niveaux, cela fait un graphique déjà bien assez chargé comme ça!!",
+                          "Non, `clarity` fait partie des esthétiques de `geom_smooth`.",
+                          "Ouhla, non! `cut` ne joue que sur la couleur des points..."))
+
 ```
