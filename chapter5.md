@@ -111,7 +111,7 @@ Si vous définissez le paramètre comme une **constante**, vous devez le spécif
 
 `@pre_exercise_code`
 ```{r}
-require(ggplot2)
+library(ggplot2)
 data(diamonds)
 ```
 
@@ -131,9 +131,9 @@ plot(p3)
 
 `@sct`
 ```{r}
-ex()%>%check_error()
-ex()%>%check_function("ggplot",c("data","mapping"))
-ex()%>%check_function("geom_point",c("shape","mapping"))
+ex() %>% check_error()
+ex() %>% check_function("ggplot",c("data","mapping"))
+ex() %>% check_function("geom_point",c("shape","mapping"))
 success_msg("Oui! Vous pouvez soit définir les paramètres des geoms comme des constantes, ou bien les relier à des variables via le processus de mapping...")
 
 ```
