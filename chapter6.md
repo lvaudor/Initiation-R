@@ -161,7 +161,10 @@ plot(p)
 
 `@sct`
 ```{r}
-ex()%>%check_error()
-ex()%>%check_ggplot(exact_aes=TRUE, exact_geom=TRUE, exact_scale=TRUE)
-ex()%>%check_function("theme_minimal")
+ex() %>% check_error()
+ex() %>% check_function("theme_minimal")
+fscalecol <- ex() %>% check_function("scale_color_gradient")
+fscalecol %>% check_arg("low") %>% check_equal()
+fscalecol %>% check_arg("high") %>% check_equal()
+success_msg("Bravo! C'est de toute beauté!")
 ```
