@@ -80,25 +80,14 @@ ex() %>% {
         check_arg(., 'y') %>% check_equal(eval = FALSE)
       }
   }
-  check_function(., 'geom_point')
+  check_function(., 'geom_point',index=1)%>%
+  {     check_arg(., 'mapping') %>%
+           check_function('aes') %>% 
+              check_arg(., 'color') %>%
+                 check_equal(eval = FALSE)
+  }
   check_error(.)
 }
-
-#fgeom1 <- ex() %>% check_function("geom_point",index=1)
-#fgeom1 %>% check_arg("mapping") 
-#ex() %>% check_object(p1) %>% check_equal()
-
-#fggplot2 <- ex() %>% check_function("ggplot",index=2)
-#fggplot2 %>% check_arg("mapping") 
-#fgeom2 <- ex() %>% check_function("geom_point",index=2)
-#fgeom2 %>% check_arg("mapping")
-#ex() %>% check_object(p2) %>% check_equal()
-
-#fggplot3 <- ex() %>% check_function("ggplot",index=3)
-#fggplot3 %>% check_arg("mapping") 
-#fgeom3 <- ex() %>% check_function("geom_point",index=3)
-#fgeom3 %>% check_arg("mapping") 
-#ex() %>% check_object(p3) %>% check_equal()
 
 success_msg("Très bien! En faisant du **mapping** vous ajoutez des informations supplémentaires à votre graphique uni ou bivarié...")
 ```
