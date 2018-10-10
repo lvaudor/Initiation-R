@@ -213,7 +213,9 @@ df_moyprix <- diamonds %>%
 
 p <- ggplot(diamonds, aes(x=cut, y=price)) +
   geom_boxplot(fill="pink")+
-  geom_point(data=df_moyprix, aes(y=moyprix))
+  geom_point(data=df_moyprix,
+             aes(y=moyprix),
+             color="blue")
 plot(p)
 ```
 
@@ -225,7 +227,7 @@ ex() %>% check_function("ggplot")
 fgeom <- ex() %>% check_function("geom_point")
 fgeom %>% check_arg("data") %>% check_equal()
 fgeom %>% check_arg("mapping") %>% check_equal()
-fgeom %>% check_arg("col") %>% check_equal()
+fgeom %>% check_arg("color") %>% check_equal()
 success_msg("Oui! Visiblement, le prix d'un diamant est peu corrélé à la perfection de sa coupe!")
 ```
 
