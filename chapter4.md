@@ -51,7 +51,11 @@ plot(p)
 `@sct`
 ```{r}
 ex()%>%check_error()
-ex()%>%check_ggplot(exact_aes=TRUE, exact_geom=TRUE)
+fggplot <- ex() %>% check_function("ggplot")
+fggplot %>% check_arg("mapping") %>% check_equal()
+fggplot %>% check_arg("data") %>% check_equal()
+fgeom <- ex() %>% check_function("geom_histogram")
+fgeom %>% check_arg("fill") %>% check_equal()
 success_msg("Bien joué! vous avez fait votre premier graphique avec ggplot...")
 ```
 
@@ -169,11 +173,20 @@ plot(p3)
 `@sct`
 ```{r}
 ex()%>%check_error()
-ex()%>%check_ggplot(index=1,exact_aes=TRUE, exact_geom=TRUE)
-ex()%>%check_ggplot(index=2,exact_aes=TRUE, exact_geom=TRUE)
-ex()%>%check_ggplot(index=3,exact_aes=TRUE, exact_geom=TRUE)
-success_msg("Bien! Il y a encore bien d'autres geoms disponibles, mais `point` et `boxplot` sont des incontournables...")
 
+fggplot1 <- ex() %>% check_function("ggplot",index=1)
+fggplot1 %>% check_arg(mapping) %>% check_equal()
+ex() %>% check_object(p1) %>% check_equal()
+
+fggplot2 <- ex() %>% check_function("ggplot",index=2)
+fggplot2 %>% check_arg(mapping) %>% check_equal()
+ex() %>% check_object(p2) %>% check_equal()
+
+fggplot3 <- ex() %>% check_function("ggplot",index=3)
+fggplot3 %>% check_arg(mapping) %>% check_equal()
+ex() %>% check_object(p3) %>% check_equal()
+
+success_msg("Bien! Il y a encore bien d'autres geoms disponibles, mais `point` et `boxplot` sont des incontournables...")
 ```
 
 ---
@@ -248,9 +261,20 @@ plot(p3)
 ```{r}
 ex()%>%check_error()
 
-ex()%>%check_ggplot(index=1,exact_aes=TRUE, exact_geom=TRUE)
-ex()%>%check_ggplot(index=2,exact_aes=TRUE, exact_geom=TRUE)
-ex()%>%check_ggplot(index=3,exact_aes=TRUE, exact_geom=TRUE)
+fggplot1 <- ex() %>% check_function("ggplot",index=1)
+fggplot1 %>% check_arg(mapping) %>% check_equal()
+ex() %>% check_function("geom_point") %>% check_arg("color") %>% check_equal()
+ex() %>% check_object(p1) %>% check_equal()
+
+fggplot2 <- ex() %>% check_function("ggplot",index=2)
+fggplot2 %>% check_arg(mapping) %>% check_equal()
+ex() %>% check_function("geom_boxplot") %>% check_arg("fill") %>% check_equal()
+ex() %>% check_object(p2) %>% check_equal()
+
+fggplot3 <- ex() %>% check_function("ggplot",index=3)
+fggplot3 %>% check_arg(mapping) %>% check_equal()
+ex() %>% check_function("geom_bar") %>% check_arg("alpha") %>% check_equal()
+ex() %>% check_object(p3) %>% check_equal()
 
 success_msg("Bien joué! Quelle joie, vous allez pouvoir customiser tous vos graphiques en rose!")
 ```
@@ -305,8 +329,11 @@ plot(p)
 
 `@sct`
 ```{r}
-ex()%>%check_error()
-ex()%>%check_ggplot(index=1,exact_aes=TRUE, exact_geom=TRUE)
+ex() %>% check_error()
+fggplot <- ex() %>% check_function("ggplot")
+fgeom1 <- ex() %>% check_function("geom_histogram")
+fgeom1 %>% check_arg("fill") %>% check_equal()
+fgeom2 <- ex() %>% check_function("geom_rug")
 
 success_msg("Bravo! Vous êtes en bonne voie pour faire des graphiques vraiment sympas!...")
 ```

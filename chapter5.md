@@ -69,9 +69,24 @@ plot(p3)
 `@sct`
 ```{r}
 ex()%>%check_error()
-ex()%>%check_ggplot(index=1, exact_aes=TRUE, exact_geom=TRUE)
-ex()%>%check_ggplot(index=2, exact_aes=TRUE, exact_geom=TRUE)
-ex()%>%check_ggplot(index=3, exact_aes=TRUE, exact_geom=TRUE)
+
+fggplot1 <- ex() %>% check_function("ggplot",index=1)
+fggplot1 %>% check_arg(mapping) %>% check_equal()
+fgeom1 <- ex() %>% check_function("geom_point",index=1)
+fgeom1 %>% check_arg("mapping") %>% check_equal()
+ex() %>% check_object(p1) %>% check_equal()
+
+fggplot2 <- ex() %>% check_function("ggplot",index=2)
+fggplot2 %>% check_arg(mapping) %>% check_equal()
+fgeom2 <- ex() %>% check_function("geom_point",index=2)
+fgeom2 %>% check_arg("mapping") %>% check_equal()
+ex() %>% check_object(p2) %>% check_equal()
+
+fggplot3 <- ex() %>% check_function("ggplot",index=3)
+fggplot3 %>% check_arg(mapping) %>% check_equal()
+fgeom3 <- ex() %>% check_function("geom_point",index=3)
+fgeom3 %>% check_arg("mapping") %>% check_equal()
+ex() %>% check_object(p3) %>% check_equal()
 
 success_msg("Très bien! En faisant du **mapping** vous ajoutez des informations supplémentaires à votre graphique uni ou bivarié...")
 ```
