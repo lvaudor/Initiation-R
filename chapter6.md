@@ -230,7 +230,7 @@ success_msg("Oui! Visiblement, le prix d'un diamant est peu corrélé à la perf
 
 ---
 
-## Insert exercise title here
+## Des facettes par milliers?
 
 ```yaml
 type: MultipleChoiceExercise
