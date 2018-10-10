@@ -58,7 +58,15 @@ plot(p)
 `@sct`
 ```{r}
 ex()%>%check_error()
-ex()%>%check_ggplot(index=1,exact_aes=TRUE, exact_geom=TRUE, check_scale=TRUE)
+fggplot <- ex() %>% check_function("ggplot")
+fggplot %>% check_arg("mapping") %>% check_equal()
+ex() %>% check_object("p") %>% check_equal()
+flabs <- ex() %>% check_function("labs")
+flabs %>% check_arg("x")
+flabs %>% check_arg("y")
+ex() %>% check_function("scale_y_log10")
+fscalex=ex() %>% check_function("scale_x_discrete")
+fscalex %>% check_arg("labels") 
 success_msg("Oui! Vous savez maintenant customiser vos axes!!")
 ```
 

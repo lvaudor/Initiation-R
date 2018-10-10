@@ -175,15 +175,15 @@ plot(p3)
 ex()%>%check_error()
 
 fggplot1 <- ex() %>% check_function("ggplot",index=1)
-fggplot1 %>% check_arg(mapping) %>% check_equal()
+fggplot1 %>% check_arg("mapping") %>% check_equal()
 ex() %>% check_object(p1) %>% check_equal()
 
 fggplot2 <- ex() %>% check_function("ggplot",index=2)
-fggplot2 %>% check_arg(mapping) %>% check_equal()
+fggplot2 %>% check_arg("mapping") %>% check_equal()
 ex() %>% check_object(p2) %>% check_equal()
 
 fggplot3 <- ex() %>% check_function("ggplot",index=3)
-fggplot3 %>% check_arg(mapping) %>% check_equal()
+fggplot3 %>% check_arg("mapping") %>% check_equal()
 ex() %>% check_object(p3) %>% check_equal()
 
 success_msg("Bien! Il y a encore bien d'autres geoms disponibles, mais `point` et `boxplot` sont des incontournables...")
@@ -262,17 +262,17 @@ plot(p3)
 ex()%>%check_error()
 
 fggplot1 <- ex() %>% check_function("ggplot",index=1)
-fggplot1 %>% check_arg(mapping) %>% check_equal()
+fggplot1 %>% check_arg("mapping") %>% check_equal()
 ex() %>% check_function("geom_point") %>% check_arg("color") %>% check_equal()
 ex() %>% check_object(p1) %>% check_equal()
 
 fggplot2 <- ex() %>% check_function("ggplot",index=2)
-fggplot2 %>% check_arg(mapping) %>% check_equal()
+fggplot2 %>% check_arg("mapping") %>% check_equal()
 ex() %>% check_function("geom_boxplot") %>% check_arg("fill") %>% check_equal()
 ex() %>% check_object(p2) %>% check_equal()
 
 fggplot3 <- ex() %>% check_function("ggplot",index=3)
-fggplot3 %>% check_arg(mapping) %>% check_equal()
+fggplot3 %>% check_arg("mapping") %>% check_equal()
 ex() %>% check_function("geom_bar") %>% check_arg("alpha") %>% check_equal()
 ex() %>% check_object(p3) %>% check_equal()
 
