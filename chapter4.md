@@ -13,8 +13,6 @@ xp: 100
 
 On considère le jeu de données diamonds, fourni par la librairie ggplot2.
 
-
-
 `@instructions`
 - **Examinez** le jeu de données `diamonds`
 - **Complétez** le code ci-contre pour  tracer l'histogramme correspondant au prix des diamants (couleur de remplissage: `blue`).

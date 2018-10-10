@@ -133,7 +133,6 @@ key: 0bb9a00d4a
 xp: 50
 ```
 
-
 Considérez les lignes de codes suivantes:
 
 ```{r}
@@ -230,7 +229,6 @@ xp: 100
 ```
 
 `ggplot2` et `diamonds` ont déjà été chargés.
-
 
 `@instructions`
 **Complétez** le code ci-contre pour produire **différentes facettes** du même graphique **en fonction de la coupe** des diamants (**en ligne**)
