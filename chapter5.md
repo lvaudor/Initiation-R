@@ -104,7 +104,7 @@ xp: 100
 `ggplot2` et `diamonds` ont déjà été chargés. On reprend le dernier graphique créé, `p3`.
 
 `@instructions`
-**Modifiez** le code ci-contre pour que la **forme** des points corresponde à une étoile à 6 branches (voir l'antisèche ggplot2...)
+**Modifiez** le code ci-contre pour que la **forme** des points corresponde à un **carré plein** (voir l'antisèche ggplot2...)
 
 `@hint`
 Si vous définissez le paramètre comme une **constante**, vous devez le spécifier à l'**extérieur** de la fonction `aes()`...
@@ -125,7 +125,7 @@ plot(p3)
 `@solution`
 ```{r}
 p3 <- ggplot(diamonds, aes(x=carat, y=price))+
-  geom_point(shape=11, aes(size=table, color=cut))
+  geom_point(shape=15, aes(size=table, color=cut))
 plot(p3)
 ```
 
@@ -197,7 +197,7 @@ xp: 100
 `@instructions`
 Examinez le code ci-contre et le graphique qu'il renvoie.
 
-**Corrigez** ce code pour que les effectifs des différentes coupes apparaissent les **uns par dessus les autres** et que les hauteurs soient **normalisées** (paramètre `position`... consultez votre antisèche!!)
+**Corrigez** ce code pour que les effectifs des différentes coupes apparaissent les **uns à côté des autres** (paramètre `position`... consultez votre antisèche!!)
 
 `@hint`
 Le paramètre de position **n'est pas** une esthétique.
@@ -206,7 +206,7 @@ Vous pouvez voir les valeurs possibles pour ce paramètre sur votre **antisèche
 
 `@pre_exercise_code`
 ```{r}
-require(ggplot2)
+library(ggplot2)
 data(diamonds)
 ```
 
@@ -220,7 +220,7 @@ plot(p)
 `@solution`
 ```{r}
 p <- ggplot(diamonds, aes(x=carat))+
-  geom_histogram(bins=10, position="fill",aes(fill=cut))
+  geom_histogram(bins=10, position="dodge",aes(fill=cut))
 plot(p)
 ```
 
@@ -246,7 +246,7 @@ xp: 100
 `ggplot2` et `diamonds` ont déjà été chargés.
 
 `@instructions`
-**Complétez** le code ci-contre pour produire **différentes facettes** du même graphique **en fonction de la coupe** des diamants (**en ligne**)
+**Complétez** le code ci-contre pour produire **différentes facettes** du même graphique **en fonction de la coupe** des diamants (**5 lignes, 1 colonne**)
 
 `@hint`
 Avez-vous bien fait en sorte que les facettes soient **en ligne** et non **en colonne** dans l'appel à la fonction `facet_grid()`?

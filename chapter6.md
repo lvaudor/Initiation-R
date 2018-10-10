@@ -225,9 +225,9 @@ ex() %>% check_error()
 
 ex() %>% check_function("ggplot")
 fgeom <- ex() %>% check_function("geom_point")
-fgeom %>% check_arg("data") %>% check_equal()
-fgeom %>% check_arg("mapping") %>% check_equal()
-fgeom %>% check_arg("color") %>% check_equal()
+fgeom %>% check_arg("data")
+fgeom %>% check_arg("mapping")
+fgeom %>% check_arg("color")
 success_msg("Oui! Visiblement, le prix d'un diamant est peu corrélé à la perfection de sa coupe!")
 ```
 
