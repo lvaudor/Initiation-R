@@ -86,6 +86,35 @@ ex() %>% {
               check_arg(., 'color') %>%
                  check_equal(eval = FALSE)
   }
+    check_function(., 'ggplot',index=2) %>% {
+      check_arg(., 'data') %>% check_equal()
+      check_arg(., 'mapping') %>% check_function('aes') %>% {
+        check_arg(., 'x') %>% check_equal(eval = FALSE)
+        check_arg(., 'y') %>% check_equal(eval = FALSE)
+      }
+  }
+  check_function(., 'geom_point',index=2)%>%
+  {     check_arg(., 'mapping') %>%
+           check_function('aes') %>% 
+              check_arg(., 'size') %>%
+                 check_equal(eval = FALSE)
+  }
+    check_function(., 'ggplot',index=3) %>% {
+      check_arg(., 'data') %>% check_equal()
+      check_arg(., 'mapping') %>% check_function('aes') %>% {
+        check_arg(., 'x') %>% check_equal(eval = FALSE)
+        check_arg(., 'y') %>% check_equal(eval = FALSE)
+      }
+  }
+  check_function(., 'geom_point',index=3)%>%
+  {     check_arg(., 'mapping') %>%
+           check_function('aes') %>% {
+              check_arg(., 'color') %>%
+                 check_equal(eval = FALSE)
+              check_arg('size')%>%
+                 check_equal(eval=FALSE)
+           }
+  }
   check_error(.)
 }
 
