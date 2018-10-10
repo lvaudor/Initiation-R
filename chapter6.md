@@ -178,7 +178,7 @@ key: 4afcf79a89
 xp: 100
 ```
 
-`ggplot2` et `diamonds` ont déjà été chargés.
+`ggplot2`, `dplyr` et `diamonds` ont déjà été chargés.
 
 `@instructions`
 **Complétez** le code ci-contre pour rajouter des **points bleus** montrant les **moyennes de prix** (donc moyennes de y) par coupe de diamant
@@ -188,7 +188,8 @@ xp: 100
 
 `@pre_exercise_code`
 ```{r}
-require(ggplot2)
+library(ggplot2)
+library(dplyr)
 data(diamonds)
 ```
 
