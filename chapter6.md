@@ -61,8 +61,8 @@ ex()%>%{
   check_function(., 'ggplot') %>% {
       check_arg(., 'data') %>% check_equal()
       check_arg(., 'mapping') %>% check_function('aes') %>% {
-        check_arg(., 'cut') %>% check_equal(eval = FALSE)
-        check_arg(., 'price') %>% check_equal(eval = FALSE)
+        check_arg(., 'x') %>% check_equal(eval = FALSE)
+        check_arg(., 'y') %>% check_equal(eval = FALSE)
       }
   }
   check_function(., 'geom_boxplot') %>%
@@ -182,7 +182,6 @@ ex()%>%{
   }
   check_function(., 'geom_jitter') 
   check_function(.,'theme_minimal')
-  check_function(.,'scale_y_log10')
   check_function(.,'scale_color_gradient') %>% {
      check_arg(.,"low") %>% check_equal() 
      check_arg(.,"high") %>% check_equal()
