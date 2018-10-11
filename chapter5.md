@@ -111,7 +111,7 @@ ex() %>% {
            check_function('aes') %>% {
               check_arg(., 'color') %>%
                  check_equal(eval = FALSE)
-              check_arg('size')%>%
+              check_arg(.,'size')%>%
                  check_equal(eval=FALSE)
            }
   }
@@ -174,7 +174,7 @@ ex()%>%{
            check_function('aes') %>%{ 
               check_arg(., 'color') %>%
                  check_equal(eval = FALSE)
-              check_arg(., 'table') %>%
+              check_arg(., 'size') %>%
                  check_equal(eval = FALSE)
              }
   }
@@ -287,9 +287,9 @@ ex()%>%{
                  check_equal(eval = FALSE)
              
            }
-        check_arg("position")%>%check_equal()
+        check_arg(.,"position")%>%check_equal()
   }
-  check_error()
+  check_error(.)
 }  
 
 success_msg("Oui! Avez-vous pris le temps pour bien comprendre comment le paramètre `position` modifiait la façon dont on peut lire le graphique?")
@@ -355,7 +355,7 @@ ex()%>%{
                  check_equal(eval = FALSE)             
            }
   }
-  check_error()
+  check_error(.)
 }  
 
 success_msg("Eh oui, bien joué! Les facettes , c'est trop de la boule :-) !")
