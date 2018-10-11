@@ -178,7 +178,7 @@ ex()%>%{
                  check_equal(eval = FALSE)
              }
   }
-  check_error()
+  check_error(.)
 }  
 
 success_msg("Oui! Vous pouvez soit définir les paramètres des geoms comme des constantes, ou bien les relier à des variables via le processus de mapping...")

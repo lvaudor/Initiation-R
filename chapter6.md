@@ -57,15 +57,26 @@ plot(p)
 
 `@sct`
 ```{r}
-ex() %>% check_error()
-fggplot <- ex() %>% check_function("ggplot")
-fggplot %>% check_arg("mapping") %>% check_equal()
-flabs <- ex() %>% check_function("labs")
-flabs %>% check_arg("x")
-flabs %>% check_arg("y")
-ex() %>% check_function("scale_y_log10")
-fscalex <- ex() %>% check_function("scale_x_discrete")
-fscalex %>% check_arg("labels") 
+ex()%>%{
+  check_function(., 'ggplot') %>% {
+      check_arg(., 'data') %>% check_equal()
+      check_arg(., 'mapping') %>% check_function('aes') %>% {
+        check_arg(., 'cut') %>% check_equal(eval = FALSE)
+        check_arg(., 'price') %>% check_equal(eval = FALSE)
+      }
+  }
+  check_function(., 'geom_boxplot') %>%
+    check_arg('fill') %>% 
+       check_equal()
+  check_function(.,'labs') %>% {
+    check_arg(.,'x') 
+    check_arg(.,'y')
+  }
+  check_function(.,'scale_y_log10')
+  check_function(.,'scale_x_discrete') %>% 
+     check_arg("labels")
+  check_error(.)
+}  
 success_msg("Oui! Vous savez maintenant customiser vos axes!!")
 ```
 
@@ -160,11 +171,24 @@ plot(p)
 
 `@sct`
 ```{r}
-ex() %>% check_error()
-ex() %>% check_function("theme_minimal")
-fscalecol <- ex() %>% check_function("scale_color_gradient")
-fscalecol %>% check_arg("low") %>% check_equal()
-fscalecol %>% check_arg("high") %>% check_equal()
+ex()%>%{
+  check_function(., 'ggplot') %>% {
+      check_arg(., 'data') %>% check_equal()
+      check_arg(., 'mapping') %>% check_function('aes') %>% {
+        check_arg(., 'x') %>% check_equal(eval = FALSE)
+        check_arg(., 'y') %>% check_equal(eval = FALSE)
+        check_arg(., 'color') %>% check_equal(eval = FALSE)
+      }
+  }
+  check_function(., 'geom_jitter') 
+  check_function(.,'theme_minimal')
+  check_function(.,'scale_y_log10')
+  check_function(.,'scale_color_gradient') %>% {
+     check_arg(.,"low") %>% check_equal() 
+     check_arg(.,"high") %>% check_equal()
+  }
+  check_error(.)
+}  
 success_msg("Bravo! C'est de toute beauté!")
 ```
 
@@ -221,13 +245,31 @@ plot(p)
 
 `@sct`
 ```{r}
-ex() %>% check_error()
+ex()%>%{
+  check_function(., 'group_by') %>% check_arg(., '...') %>% check_equal()
+  check_function(., 'summarise')
+  check_function(., 'ggplot')%>%
+  {     check_arg(., 'mapping') %>%
+           check_function('aes') %>%{ 
+              check_arg(., 'x') %>%
+                 check_equal(eval = FALSE)
+              check_arg(., 'y') %>%
+                 check_equal(eval = FALSE)
+             }
+  }
+    check_function(., 'geom_boxplot')
+  check_function(., "geom_point") %>%
+  {     check_arg(., 'mapping') %>%
+           check_function('aes') %>%{
+              check_arg(., 'y') %>%
+                 check_equal(eval = FALSE)
+             }
+        check_arg(.,'color') %>%
+                 check_equal()
+  }
+  check_error(.)
+}  
 
-ex() %>% check_function("ggplot")
-fgeom <- ex() %>% check_function("geom_point")
-fgeom %>% check_arg("data")
-fgeom %>% check_arg("mapping")
-fgeom %>% check_arg("color")
 success_msg("Oui! Visiblement, le prix d'un diamant est peu corrélé à la perfection de sa coupe!")
 ```
 
