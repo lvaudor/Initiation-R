@@ -161,9 +161,26 @@ plot(p3)
 
 `@sct`
 ```{r}
-ex() %>% check_error()
-ex() %>% check_function("ggplot",c("data","mapping"))
-ex() %>% check_function("geom_point",c("shape","mapping"))
+ex()%>%{
+  check_function(., 'ggplot') %>% {
+      check_arg(., 'data') %>% check_equal()
+      check_arg(., 'mapping') %>% check_function('aes') %>% {
+        check_arg(., 'x') %>% check_equal(eval = FALSE)
+        check_arg(., 'y') %>% check_equal(eval = FALSE)
+      }
+  }
+    check_function(., 'geom_point')%>%
+  {     check_arg(., 'mapping') %>%
+           check_function('aes') %>%{ 
+              check_arg(., 'color') %>%
+                 check_equal(eval = FALSE)
+              check_arg(., 'table') %>%
+                 check_equal(eval = FALSE)
+             }
+  }
+  check_error()
+}  
+
 success_msg("Oui! Vous pouvez soit définir les paramètres des geoms comme des constantes, ou bien les relier à des variables via le processus de mapping...")
 
 ```
@@ -256,9 +273,25 @@ plot(p)
 
 `@sct`
 ```{r}
-ex()%>%check_error()
-ex()%>%check_function("ggplot",c("data","mapping"))
-ex()%>%check_function("geom_histogram", c("bins","position","mapping"))
+ex()%>%{
+  check_function(., 'ggplot') %>% {
+      check_arg(., 'data') %>% check_equal()
+      check_arg(., 'mapping') %>% check_function('aes') %>% {
+        check_arg(., 'x') %>% check_equal(eval = FALSE)
+      }
+  }
+   check_function(., 'geom_histogram')%>%
+  {     check_arg(., 'mapping') %>%
+           check_function('aes') %>%{ 
+              check_arg(., 'fill') %>%
+                 check_equal(eval = FALSE)
+             
+           }
+        check_arg("position")%>%check_equal()
+  }
+  check_error()
+}  
+
 success_msg("Oui! Avez-vous pris le temps pour bien comprendre comment le paramètre `position` modifiait la façon dont on peut lire le graphique?")
 
 ```
@@ -299,15 +332,31 @@ plot(p)
 ```{r}
 p <- ggplot(diamonds, aes(x=carat, y=price, color=cut)) +
   geom_point() +
-  facet_grid(cut~.)
+  facet_grid(rows=vars(cut))
 plot(p)
 ```
 
 `@sct`
 ```{r}
-ex()%>%check_error()
-ex()%>%check_function("ggplot",c("data","mapping"))
-ex()%>%check_function("geom_point")
-ex()%>%check_function("facet_grid",c("facets"))
+ex()%>%{
+  check_function(., 'ggplot') %>% {
+      check_arg(., 'data') %>% check_equal()
+      check_arg(., 'mapping') %>% check_function('aes') %>% {
+        check_arg(., 'x') %>% check_equal(eval = FALSE)
+        check_arg(., 'y') %>% check_equal(eval = FALSE)
+        check_arg(., 'color') %>% check_equal(eval = FALSE)
+      }
+  }
+  check_function(., 'geom_point')
+  check_function(.,'facet_grid')%>% 
+  {     check_arg(., 'rows') %>%
+           check_function('vars') %>%{ 
+              check_arg(.,'...') %>%
+                 check_equal(eval = FALSE)             
+           }
+  }
+  check_error()
+}  
+
 success_msg("Eh oui, bien joué! Les facettes , c'est trop de la boule :-) !")
 ```
