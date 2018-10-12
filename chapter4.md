@@ -193,7 +193,6 @@ ex()%>%{
       check_arg(., 'data') %>% check_equal()
       check_arg(., 'mapping') %>% check_function('aes') %>% {
         check_arg(., 'x') %>% check_equal(eval = FALSE)
-         check_arg(., 'y') %>% check_equal(eval = FALSE)
       }
   }
    check_function(., 'geom_bar')
@@ -294,7 +293,6 @@ ex()%>%{
       check_arg(., 'data') %>% check_equal()
       check_arg(., 'mapping') %>% check_function('aes') %>% {
         check_arg(., 'x') %>% check_equal(eval = FALSE)
-         check_arg(., 'y') %>% check_equal(eval = FALSE)
       }
   }
    check_function(., 'geom_bar')%>%check_arg("alpha")%>%check_equal()
