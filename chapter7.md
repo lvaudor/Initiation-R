@@ -3,7 +3,7 @@ title: 'Projets et rapports'
 description: ""
 ---
 
-## Insert exercise title here
+## Rapports: question facile
 
 ```yaml
 type: MultipleChoiceExercise
@@ -19,7 +19,7 @@ Laquelle de ces propositions est **vraie**?
 
 `@possible_answers`
 - Vous n'avez pas très très bien compris l'intérêt de la production de rapports depuis RStudio, ça ressemble à une lubie de la prof.
-- La production de rapports depuis RStudio est vraiment un aspect intéressant et vous êtes sûr(e) de l'expérimenter très prochainement.
+- La production de rapports depuis RStudio est vraiment un aspect intéressant et, si ce n'est pas déjà fait, vous êtes sûr(e) de l'expérimenter très prochainement.
 - Vous n'êtes pas sûr(e) d'utiliser la production de rapports depuis RStudio parce que franchement, si vous réussissez déjà à faire tourner deux-trois scripts de base après un seul jour de formation, ça sera déjà pas mal.
 
 `@hint`

@@ -123,9 +123,9 @@ key: 4601e30249
 xp: 100
 ```
 
-Repartons du test sur les sapins. Le graphique ci-contre vous montre que l'hypothèse de normalité des données n'est peut-être pas respectée... 
+Repartons du test sur les sapins. Le graphique ci-contre vous montre que l'**hypothèse de normalité** des données n'est peut-être pas respectée... 
 
-Le jeu de données `broceliande_sapins` et le test `test_sapins` réalisés précédemment sont déjà dans l'environnement ci-contre. Les librairies `tidyverse` et `infer` ont déjà été chargées.
+Le jeu de données `broceliande_sapins` et le test `test_sapins` réalisés précédemment sont déjà dans l'environnement ci-contre. La librairie `infer` a déjà été chargée.
 
 `@instructions`
 Examinons si la distribution de la statistique T obtenue par des simulations serait très différente de la distribution théorique (et si, en conséquence, la p-value donnerait un résultat différent).
@@ -137,11 +137,11 @@ La valeur de statistique observée est toujours la même, qu'on soit en train de
 
 `@pre_exercise_code`
 ```{r}
-broceliande=readr::read_delim('datasets/broceliande.csv',delim=';')
+broceliande=read.csv("http://perso.ens-lyon.fr/lise.vaudor/grimoireStat/datasets/broceliande.csv",
+                     header=TRUE,sep=";")
 library(infer)
-library(tidyverse)
 library(ggplot2)
-broceliande_sapins=filter(broceliande, espece=="sapin")
+broceliande_sapins=dplyr::filter(broceliande, espece=="sapin")
 test_sapins <- broceliande_sapins %>% 
   t_test(perlimpinpin~enchantement, order=c(FALSE, TRUE))
 
