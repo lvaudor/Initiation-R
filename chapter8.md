@@ -167,6 +167,15 @@ obs_stat <- test_sapins$___
 p_value_nouvelle <- sim_sapins %>% 
    get_pvalue(obs_stat=___,
               direction="two_sided")
+
+sim_sapins%>%
+   visualize(obs_stat=obs_stat,
+             direction="two_sided")
+
+# Est-ce que l'interprétation du test est différente si on ne considère pas la distribution théorique de la statistique, 
+# mais celle qu'on a calculée sur les données simulées?
+# (Répondre "oui" ou "non":)
+reponse <- "___"
 ```
 
 `@solution`
@@ -187,6 +196,8 @@ p_value_nouvelle <- sim_sapins %>%
 sim_sapins%>%
    visualize(obs_stat=obs_stat,
              direction="two_sided")
+
+reponse <- "non"
 ```
 
 `@sct`
@@ -199,6 +210,7 @@ ex()%>%{
   check_object(.,"obs_stat") %>% check_equal()
   check_object(.,"p_value_nouvelle") %>% check_equal()
   check_function(.,"visualize") %>% check_argument("obs_stat") %>% check_value()
+  check_object(.,"reponse")%>% check_value()
   check_error(.)
 }
 ```
