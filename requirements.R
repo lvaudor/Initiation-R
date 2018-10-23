@@ -8,7 +8,7 @@ install_version("ggplot2", "3.0.0")
 
 install_version("dplyr", "0.7.5")
 install_version("readr","1.1.1")
-
+install_version("infer","0.3.1")
 ##### Install packages in development from GitHub #####
 
 # install_github("nicholasehamilton/ggtern")
