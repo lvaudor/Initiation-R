@@ -11,7 +11,6 @@ key: 713f9bb3ca
 xp: 50
 ```
 
-
 **Examinez** le code suivant (**sans l'exécuter** sinon c'est de la triche!...):
 
 ```{r, eval=FALSE}
