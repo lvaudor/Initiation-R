@@ -55,8 +55,8 @@ test_chenes <- broceliande_chenes %>%
 ex()%>%{
   check_object(broceliande_sapins)
   check_object(broceliande_chenes)
-  check_function(.,'t_test', index=1) %>%check_argument('order') 
-  check_function(.,'t_test', index=2) %>%check_argument('order')
+  check_function(.,'t_test', index=1) %>%check_arg('order') 
+  check_function(.,'t_test', index=2) %>%check_arg('order')
   check_error(.)
 }  
 
@@ -208,7 +208,7 @@ ex()%>%{
   check_function(.,"calculate")
   check_object(.,"obs_stat") %>% check_equal()
   check_object(.,"p_value_nouvelle") %>% check_equal()
-  check_function(.,"visualize") %>% check_argument("obs_stat") %>% check_value()
+  check_function(.,"visualize") %>% check_arg("obs_stat") %>% check_value()
   check_object(.,"reponse")%>% check_value()
   check_error(.)
 }
@@ -216,7 +216,7 @@ ex()%>%{
 
 ---
 
-## Insert exercise title here
+## Test statistique sur données catégorielles
 
 ```yaml
 type: NormalExercise
@@ -241,7 +241,6 @@ library(infer)
 library(dplyr)
 fantaisie=read.csv("http://perso.ens-lyon.fr/lise.vaudor/grimoireStat/datasets/chateauxEtBoulots.csv",
                      header=TRUE,sep=";")
-
 ```
 
 `@sample_code`
@@ -298,7 +297,6 @@ sim_fantaisie %>%
 # mais celle qu'on a calculée sur les données simulées?
 # (Répondre "oui" ou "non":)
 reponse_distrib <- "non"
-
 
 ## Est-ce qu'on rejette l'hypothèse d'indépendance au seuil de 5%?
 # (Répondre "oui" ou "non":)
