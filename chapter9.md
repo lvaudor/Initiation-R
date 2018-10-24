@@ -57,3 +57,45 @@ ex() %>%
   check_mc(correct = 3,
            feedback_msgs = c(msg_wrong,msg_wrong,msg_right,msg_wrong))
 ```
+
+---
+
+## Ecrire une fonction
+
+```yaml
+type: NormalExercise
+key: 7a58da9be9
+xp: 100
+```
+
+Examinez le code ci-contre. Servez-vous de cet exemple pour construire la fonction `calcule_effet()` qui prend pour argument d'entrée un nom d'ingrédient de la table `potions` (déjà dans l'environnement), 
+
+`@instructions`
+
+
+`@hint`
+
+
+`@pre_exercise_code`
+```{r}
+broceliande=read.csv("http://perso.ens-lyon.fr/lise.vaudor/grimoireStat/datasets/broceliande.csv",
+                     header=TRUE,sep=";")
+```
+
+`@sample_code`
+```{r}
+library(dplyr)
+
+calcule_effet
+
+```
+
+`@solution`
+```{r}
+
+```
+
+`@sct`
+```{r}
+
+```

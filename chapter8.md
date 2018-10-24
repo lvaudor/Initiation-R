@@ -53,8 +53,8 @@ test_chenes <- broceliande_chenes %>%
 `@sct`
 ```{r}
 ex()%>%{
-  check_object(broceliande_sapins)
-  check_object(broceliande_chenes)
+  check_object(.,broceliande_sapins)
+  check_object(.,broceliande_chenes)
   check_function(.,'t_test', index=1) %>%check_arg('order') 
   check_function(.,'t_test', index=2) %>%check_arg('order')
   check_error(.)
@@ -209,7 +209,7 @@ ex()%>%{
   check_object(.,"obs_stat") %>% check_equal()
   check_object(.,"p_value_nouvelle") %>% check_equal()
   check_function(.,"visualize") %>% check_arg("obs_stat") %>% check_value()
-  check_object(.,"reponse")%>% check_value()
+  check_object(.,"reponse")%>% check_equal()
   check_error(.)
 }
 ```
@@ -312,8 +312,8 @@ ex() %>% {
   check_function(.,"hypothesize")
   check_function(.,"generate")
   check_function(.,"calculate") %>% check_arg("stat")
-  check_function(.,"visualize") %>% check_arg("direction") %>% check_value()
-  check_function(.,"get_pvalue") %>% check_arg("direction")%>% check_value()
+  check_function(.,"visualize") %>% check_arg("direction") %>% check_equal()
+  check_function(.,"get_pvalue") %>% check_arg("direction")%>% check_equal()
   check_object(.,"reponse_distrib") %>% check_equal()
   check_object(.,"reponse_test") %>% check_equal()
 }
