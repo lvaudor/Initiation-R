@@ -52,8 +52,6 @@ test_chenes <- broceliande_chenes %>%
 
 `@sct`
 ```{r}
-ex()%>%
-
 ex()%>%{
   check_object(broceliande_sapins)
   check_object(broceliande_chenes)
@@ -140,6 +138,7 @@ La valeur de statistique observée est toujours la même, qu'on soit en train de
 broceliande=read.csv("http://perso.ens-lyon.fr/lise.vaudor/grimoireStat/datasets/broceliande.csv",
                      header=TRUE,sep=";")
 library(infer)
+library(dplyr)
 library(ggplot2)
 broceliande_sapins=dplyr::filter(broceliande, espece=="sapin")
 test_sapins <- broceliande_sapins %>% 
