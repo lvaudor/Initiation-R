@@ -213,3 +213,110 @@ ex()%>%{
   check_error(.)
 }
 ```
+
+---
+
+## Insert exercise title here
+
+```yaml
+type: NormalExercise
+key: efd5907135
+xp: 100
+```
+
+On considère le jeu de données `fantaisie` et on s'intéresse au lien entre l'activité et la couleur de tenue. (Est-ce que l'habit fait le moine? Est-ce qu'une tenue noire fait un mage noir?).
+
+Les packages `dplyr` et `infer` sont déjà chargés dans l'environnement, de même que la table `fantaisie`.
+
+`@instructions`
+Réalisez un test pour déterminer si les variables `tenue` et `activite` sont indépendantes.
+
+`@hint`
+Attention, ici on considère la proportion de cas où la statistique est **plus grande** que la statistique observée sur les données.
+Le lien est significatif
+
+`@pre_exercise_code`
+```{r}
+library(infer)
+library(dplyr)
+fantaisie=read.csv("http://perso.ens-lyon.fr/lise.vaudor/grimoireStat/datasets/chateauxEtBoulots.csv",
+                     header=TRUE,sep=";")
+
+```
+
+`@sample_code`
+```{r}
+test_fantaisie <- fantaisie %>% 
+  ___(activite~tenue)
+
+sim_fantaisie <- fantaisie %>% 
+  ___(activite~tenue) %>%
+  ___(null="independence") %>% 
+  ___(reps=1000) %>% 
+  ___(stat=___)
+
+sim_fantaisie %>% 
+  visualize(obs_stat=___,
+            method="both",
+            direction=___)
+
+sim_fantaisie %>% 
+  get_pvalue(obs_stat=___,
+             direction=___)
+
+## Est-ce que l'interprétation du test est différente si on ne considère pas la distribution théorique de la statistique, 
+# mais celle qu'on a calculée sur les données simulées?
+# (Répondre "oui" ou "non":)
+reponse_distrib <- 
+
+## Est-ce qu'on rejette l'hypothèse d'indépendance au seuil de 5%?
+# (Répondre "oui" ou "non":)
+reponse_test <- 
+
+```
+
+`@solution`
+```{r}
+test_fantaisie <- fantaisie %>% 
+  chisq_test(activite~tenue)
+
+sim_fantaisie <- fantaisie%>% 
+  specify(activite~tenue) %>%
+  hypothesize(null="independence") %>% 
+  generate(reps=1000) %>% 
+  calculate(stat="Chisq")
+
+sim_fantaisie %>% 
+  visualize(obs_stat=test_fantaisie$statistic,
+            method="both",
+            direction="greater")
+
+sim_fantaisie %>% 
+  get_pvalue(obs_stat=test_fantaisie$statistic,direction="greater")
+
+## Est-ce que l'interprétation du test est différente si on ne considère pas la distribution théorique de la statistique, 
+# mais celle qu'on a calculée sur les données simulées?
+# (Répondre "oui" ou "non":)
+reponse_distrib <- "non"
+
+
+## Est-ce qu'on rejette l'hypothèse d'indépendance au seuil de 5%?
+# (Répondre "oui" ou "non":)
+reponse_test <- "oui"
+
+```
+
+`@sct`
+```{r}
+ex() %>% {
+  check_function(.,"chisq_test")
+  check_function(.,"specify")
+  check_function(.,"hypothesize")
+  check_function(.,"generate")
+  check_function(.,"calculate") %>% check_arg("stat")
+  check_function(.,"visualize") %>% check_arg("direction") %>% check_value()
+  check_function(.,"get_pvalue") %>% check_arg("direction")%>% check_value()
+  check_object(.,"reponse_distrib") %>% check_equal()
+  check_object(.,"reponse_test") %>% check_equal()
+}
+```
