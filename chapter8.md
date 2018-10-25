@@ -53,8 +53,8 @@ test_chenes <- broceliande_chenes %>%
 `@sct`
 ```{r}
 ex()%>%{
-  check_object(.,broceliande_sapins)
-  check_object(.,broceliande_chenes)
+  check_object(.,"broceliande_sapins")
+  check_object(.,"broceliande_chenes")
   check_function(.,'t_test', index=1) %>% check_arg('order') 
   check_function(.,'t_test', index=2) %>% check_arg('order')
   check_error(.)
