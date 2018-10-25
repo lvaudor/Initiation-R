@@ -42,7 +42,7 @@ Quel sont les **messages qui s'affichent** dans la console?
 - **pouet pouet** puis **kadagwek**
 
 `@hint`
-
+Suivez bien l'ordre dans lequel vous devez entrer (ou pas) dans chacune des structures en fonction de la valeur de `truc`.
 
 `@pre_exercise_code`
 ```{r}
@@ -68,7 +68,7 @@ key: 7a58da9be9
 xp: 100
 ```
 
-Examinez le code ci-contre. Servez-vous de cet exemple pour construire la fonction `create_histogram()` qui prend pour argument d'entrée un nom d'ingrédient de la table `broceliande` (déjà dans l'environnement),
+Examinez le code ci-contre. Servez-vous de cet exemple pour construire la fonction `create_histogram()` de sorte qu'elle prenne pour argument d'entrée `nomvariable`, et renvoie en sortie un histogramme `p`
 
 `@instructions`
 Servez-vous de cet exemple pour construire la fonction `create_histogram()` qui prend pour argument d'entrée un nom d'ingrédient de la table `broceliande` (déjà dans l'environnement), et renvoie en sortie son histogramme. Testez l'appel à cette fonction sur différentes variables.
@@ -89,7 +89,7 @@ library(ggplot2)
 p <- ggplot(broceliande,aes_string("perlimpinpin"))+
 		geom_histogram(fill="pink")
 
-create_histogram <- function(nomvariable=____){
+create_histogram <- function(nomvariable){
 _____
 _____
 _____
@@ -118,10 +118,59 @@ create_histogram("age")
 ```{r}
 ex()%>%{
   check_error(.)
-  check_function(.,"create_histogram")
+  check_function(.,"create_histogram")%>%check_function("aes_string")%>%check_equal()
 }
 success_msg("Eh oui! Pour écrire une fonction, il faut bien **distinguer** les objets qui doivent faire office d'**input** et d'**output** dans un code somme toute ordinaire...")
 ```
+
+---
+
+## Insert exercise title here
+
+```yaml
+type: PureMultipleChoiceExercise
+key: 5c62e41984
+xp: 50
+```
+
+**Examinez** le code suivant (**sans l'exécuter** sinon c'est de la triche!...):
+
+```{r, eval=FALSE}
+truc <- 5.2
+
+if(truc<10){
+  if(truc>0){
+    print("pouet pouet")
+  }else{
+    print("badaboum")
+  }
+  if(truc<4){
+    print("crac boum hue")
+  }else{
+    print("kadagwek")
+  }
+  if(mean(truc)>=5){
+    print("woup woup")
+  }
+}
+```
+
+Quel sont les **messages qui s'affichent** dans la console?
+
+`@hint`
+
+
+`@possible_answers`
+- **pouet pouet** puis **crac boum hue**
+- **badaboum** puis **crac boum hue** puis **woup woup**
+- **pouet pouet** puis **kadagwek** puis **woup woup**
+- **pouet pouet** puis **kadagwek**
+
+`@feedback`
+msg_wrong="Non! Essayez de bien décomposer, dans l'ordre, les instructions..."
+msg_right="Oui bravo! Vous commencez à savoir parler R couramment..."
+test_mc(correct = 3,
+           feedback_msgs = c(msg_wrong,msg_wrong,msg_right,msg_wrong))
 
 ---
 
@@ -135,12 +184,13 @@ xp: 50
 
 Examinez la fonction suivante:
 
+```{r}
 create_histogram <- function(nomdata,nomvariable,fillcolor="red"){
 	p <- ggplot(nomdata,aes_string(nomvariable))+
 			geom_histogram(fill=fillcolor)
   return(p)
 }
-
+```
 Qu'est-ce que l'appel suivant me renverrait ? (Répondez sans exécuter le code, et en imaginant que le jeu de données `diamonds` est dans l'environnement)
 
 create_histogram(diamonds,"price")
@@ -191,16 +241,18 @@ Il faut que le compteur parcoure le vecteur `variables`.
 library(ggplot2)
 broceliande=read.csv("http://perso.ens-lyon.fr/lise.vaudor/grimoireStat/datasets/broceliande.csv",
                      header=TRUE,sep=";")
+
+
+```
+
+`@sample_code`
+```{r}
 create_histogram <- function(nomdata,nomvariable,fillcolor="red"){
 	p <- ggplot(nomdata,aes_string(nomvariable))+
 			geom_histogram(fill=fillcolor)
   return(p)
 }
 
-```
-
-`@sample_code`
-```{r}
 variables=c("age","hauteur","largeur","perlimpinpin")
 for (___){
   p <- create_histogram(___)
@@ -210,6 +262,12 @@ for (___){
 
 `@solution`
 ```{r}
+create_histogram <- function(nomdata,nomvariable,fillcolor="red"){
+	p <- ggplot(nomdata,aes_string(nomvariable))+
+			geom_histogram(fill=fillcolor)
+  return(p)
+}
+
 variables=c("age","hauteur","largeur","perlimpinpin")
 for (i in 1:length(variables)){
   p <- create_histogram(broceliande,variables[i])
@@ -240,7 +298,7 @@ xp: 100
 On cherche à nouveau à automatiser la production d'histogrammes en se servant à la fois de notre fonction `create_histogram()` (un peu modifiée, voir ci-contre) et la fonction `map()` du package `purrr` (déjà chargé dans l'environnement).
 
 `@instructions`
-Produisez l'objet listplots puis voyez comment la fonction wrap_plots de patchwork peut utiliser cette liste de plots pour produire un graphique composite.
+Produisez l'objet `listplots` puis voyez comment la fonction wrap_plots de patchwork peut utiliser cette liste de plots pour produire un graphique composite.
 
 `@hint`
 Avez-vous bien utilisé les arguments dans le bon ordre dans l'appel à la fonction `map()`?
