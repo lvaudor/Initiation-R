@@ -169,7 +169,7 @@ ex()%>%check_mc(correct = 1,
 
 ---
 
-## Insert exercise title here
+## Boucle for
 
 ```yaml
 type: NormalExercise
@@ -183,7 +183,7 @@ On considère un certain nombres de variables du jeu de données `broceliande` (
 Complétez la boucle for pour produire un histogramme pour chacune des variables listées.
 
 `@hint`
-
+Il faut que le compteur parcoure le vecteur `variables`.
 
 `@pre_exercise_code`
 ```{r}
@@ -220,7 +220,7 @@ for (i in 1:length(variables)){
 ```{r}
 ex()%>%{
   check_error(.,)
-  check_operator(.,"for")
-  check_student_typed(.,"in")
+  check_for(.)
+  check_code(.,"in")
 }
 ```
