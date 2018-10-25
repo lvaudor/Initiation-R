@@ -237,17 +237,18 @@ key: 4e9e35bc57
 xp: 100
 ```
 
-
+On cherche à nouveau à automatiser la production d'histogrammes en se servant à la fois de notre fonction `create_histogram()` (un peu modifiée, voir ci-contre) et la fonction `map()` du package `purrr` (déjà chargé dans l'environnement).
 
 `@instructions`
-
+Produisez l'objet listplots puis voyez comment la fonction wrap_plots de patchwork peut utiliser cette liste de plots pour produire un graphique composite.
 
 `@hint`
-
+Avez-vous bien utilisé les arguments dans le bon ordre dans l'appel à la fonction `map()`?
 
 `@pre_exercise_code`
 ```{r}
 library(ggplot2)
+library(purrr)
 broceliande=read.csv("http://perso.ens-lyon.fr/lise.vaudor/grimoireStat/datasets/broceliande.csv",
                      header=TRUE,sep=";")
 
@@ -263,14 +264,13 @@ create_histogram <- function(nomvariable,nomdata=broceliande,fillcolor="red"){
 create_histogram("largeur")
 
 variables=c("age","hauteur","largeur","perlimpinpin")
-listplots <- ___________
+listplots <- map(___________)
 patchwork::wrap_plots(listplots)
 
 ```
 
 `@solution`
 ```{r}
-
 create_histogram <- function(nomvariable,nomdata=broceliande,fillcolor="red"){
 	p <- ggplot(broceliande,aes_string(nomvariable))+
 			geom_histogram(fill=fillcolor)
