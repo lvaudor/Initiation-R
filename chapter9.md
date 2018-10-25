@@ -120,6 +120,7 @@ ex()%>%{
   check_error(.)
   check_function(.,"create_histogram")
 }
+success_msg("Eh oui! Pour écrire une fonction, il faut bien **distinguer** les objets qui doivent faire office d'**input** et d'**output** dans un code somme toute ordinaire...")
 ```
 
 ---
@@ -223,6 +224,7 @@ ex()%>%{
   check_for(.)
   check_code(.,"in")
 }
+success_msg("Bien joué! Ici à chaque itération l'objet `p` est écrasé de même que le graphique. On va procéder différemment dans l'exercice suivant...")
 ```
 
 ---
@@ -248,18 +250,12 @@ xp: 100
 library(ggplot2)
 broceliande=read.csv("http://perso.ens-lyon.fr/lise.vaudor/grimoireStat/datasets/broceliande.csv",
                      header=TRUE,sep=";")
-create_histogram <- function(nomdata,nomvariable,fillcolor="red"){
-	p <- ggplot(nomdata,aes_string(nomvariable))+
-			geom_histogram(fill=fillcolor)
-  return(p)
-}
 
 ```
 
 `@sample_code`
 ```{r}
-
-create_histogram <- function(nomdata,nomvariable,fillcolor="red"){
+create_histogram <- function(nomvariable,nomdata=broceliande,fillcolor="red"){
 	p <- ggplot(nomdata,aes_string(nomvariable))+
 			geom_histogram(fill=fillcolor)
   return(p)
@@ -269,13 +265,14 @@ create_histogram("largeur")
 variables=c("age","hauteur","largeur","perlimpinpin")
 listplots <- ___________
 patchwork::wrap_plots(listplots)
+
 ```
 
 `@solution`
 ```{r}
 
-create_histogram <- function(nomdata,nomvariable,fillcolor="red"){
-	p <- ggplot(nomdata,aes_string(nomvariable))+
+create_histogram <- function(nomvariable,nomdata=broceliande,fillcolor="red"){
+	p <- ggplot(broceliande,aes_string(nomvariable))+
 			geom_histogram(fill=fillcolor)
   return(p)
 }
@@ -291,7 +288,9 @@ patchwork::wrap_plots(listplots)
 ex()%>%{
   check_error(.)
   check_function(.,"map")%>% {
-    check_arg(.,".fun")
+    check_arg(.,".f")
     check_arg(.,".x")}
 }
+
+success_msg("Bravo! Avez-vous remarqué que nous avions changé l'ordre des arguments de la fonction `create_histogram()` de façon à ce que le nom de la variable soit le **premier argument?")
 ```
