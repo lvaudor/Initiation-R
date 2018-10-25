@@ -11,7 +11,7 @@ install_version("readr","1.1.1")
 install_version("infer","0.3.1")
 install_version("broom", "0.5.0")
 ##### Install packages in development from GitHub #####
-#install_github("thomasp85/patchwork")
+install_github("thomasp85/patchwork")
 # install_github("nicholasehamilton/ggtern")
 
 ##### Install packages from Bioconductor
