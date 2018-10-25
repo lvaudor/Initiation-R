@@ -208,7 +208,7 @@ ex()%>%{
   check_function(.,"calculate")
   check_object(.,"obs_stat") %>% check_equal()
   check_object(.,"p_value_nouvelle") %>% check_equal()
-  check_function(.,"visualize") %>% check_arg("obs_stat") %>% check_value()
+  check_function(.,"visualize") %>% check_arg("obs_stat") %>% check_equal()
   check_object(.,"reponse")%>% check_equal()
   check_error(.)
 }
