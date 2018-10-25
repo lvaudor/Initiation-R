@@ -84,7 +84,7 @@ broceliande=read.csv("http://perso.ens-lyon.fr/lise.vaudor/grimoireStat/datasets
 
 `@sample_code`
 ```{r}
-library(dplyr)
+library(ggplot2)
 
 p <- ggplot(broceliande,aes_string("perlimpinpin"))+
 		geom_histogram(fill="pink")
@@ -100,7 +100,7 @@ create_histogram("age")
 
 `@solution`
 ```{r}
-library(dplyr)
+library(ggplot2)
 
 p <- ggplot(broceliande,aes_string("perlimpinpin"))+
 		geom_histogram(fill="pink")
@@ -164,7 +164,7 @@ ex()%>%check_mc(correct = 1,
         feedback_msgs = c("Oui tout a fait! il n'y a pas d'erreur ici, et la couleur par défaut est 'red'",
                           "Non! la fonction est ecrite de sorte que la couleur par defaut est 'red'",
                           "Non! il n'y a pas besoin de preciser la valeur de la couleur de remplissage, car sa valeur est fixee par defaut a 'red'",
-                          "Non! l'objet `diamonds` existe dans l'environnement, mais pas l'objet `price`... C'est donc normal qu'on passe diamonds sans guillemets et price avec guillemets...))
+                          "Non! l'objet `diamonds` existe dans l'environnement, mais pas l'objet `price`... C'est donc normal que diamonds soit sans guillemets et price avec guillemets..."))
 ```
 
 ---
