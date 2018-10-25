@@ -221,6 +221,6 @@ for (i in 1:length(variables)){
 ex()%>%{
   check_error(.,)
   check_operator(.,"for")
-  check_operator(.,"in")
+  check_student_typed(.,"in")
 }
 ```
