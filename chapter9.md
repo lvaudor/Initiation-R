@@ -68,7 +68,7 @@ key: 7a58da9be9
 xp: 100
 ```
 
-Examinez le code ci-contre. Servez-vous de cet exemple pour construire la fonction `calcule_effet()` qui prend pour argument d'entrée un nom d'ingrédient de la table `potions` (déjà dans l'environnement), 
+Examinez le code ci-contre. Servez-vous de cet exemple pour construire la fonction `calcule_effet()` qui prend pour argument d'entrée un nom d'ingrédient de la table `potions` (déjà dans l'environnement),
 
 `@instructions`
 
