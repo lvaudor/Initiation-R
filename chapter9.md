@@ -117,8 +117,8 @@ create_histogram("age")
 `@sct`
 ```{r}
 ex()%>%{
-  check_error()
-  check_function("create_histogram")
+  check_error(.)
+  check_function(.,"create_histogram")
 }
 ```
 
@@ -190,6 +190,12 @@ Complétez la boucle for pour produire un histogramme pour chacune des variables
 library(ggplot2)
 broceliande=read.csv("http://perso.ens-lyon.fr/lise.vaudor/grimoireStat/datasets/broceliande.csv",
                      header=TRUE,sep=";")
+create_histogram <- function(nomdata,nomvariable,fillcolor="red"){
+	p <- ggplot(nomdata,aes_string(nomvariable))+
+			geom_histogram(fill=fillcolor)
+  return(p)
+}
+
 ```
 
 `@sample_code`
