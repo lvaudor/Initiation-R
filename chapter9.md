@@ -188,7 +188,8 @@ Complétez la boucle for pour produire un histogramme pour chacune des variables
 `@pre_exercise_code`
 ```{r}
 library(ggplot2)
-broceliande
+broceliande=read.csv("http://perso.ens-lyon.fr/lise.vaudor/grimoireStat/datasets/broceliande.csv",
+                     header=TRUE,sep=";")
 ```
 
 `@sample_code`
