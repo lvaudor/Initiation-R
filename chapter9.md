@@ -161,9 +161,9 @@ Il n'y a pas nécessairement besoin d'appeler la fonction en précisant l'argume
 `@sct`
 ```{r}
 ex()%>%check_mc(correct = 1,
-        feedback_msgs = c("Oui tout à fait! il n'y a pas d'erreur ici, et la couleur par défaut est 'red'",
-                          "Non! la fonction est écrite de sorte que la couleur par défaut est 'red'",
-                          "Non! il n'y a pas besoin de préciser la valeur de la couleur de remplissage, car sa valeur est fixée par défaut à 'red'",
+        feedback_msgs = c("Oui tout a fait! il n'y a pas d'erreur ici, et la couleur par défaut est 'red'",
+                          "Non! la fonction est ecrite de sorte que la couleur par defaut est 'red'",
+                          "Non! il n'y a pas besoin de preciser la valeur de la couleur de remplissage, car sa valeur est fixee par defaut a 'red'",
                           "Non! l'objet `diamonds` existe dans l'environnement, mais pas l'objet `price`... C'est donc normal qu'on passe diamonds sans guillemets et price avec guillemets...))
 ```
 
@@ -211,5 +211,9 @@ for (i in 1:length(variables)){
 
 `@sct`
 ```{r}
-
+ex()%>%{
+  check_error()
+  check_operator("for")
+  check_operator("in")
+}
 ```
