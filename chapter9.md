@@ -200,7 +200,7 @@ create_histogram <- function(nomdata,nomvariable,fillcolor="red"){
 
 `@sample_code`
 ```{r}
-variables=c("age","hauteur","gui","largeur","fees","lutins","perlimpinpin")
+variables=c("age","hauteur","largeur","perlimpinpin")
 for (___){
   p <- create_histogram(___)
   plot(p)
@@ -209,7 +209,7 @@ for (___){
 
 `@solution`
 ```{r}
-variables=c("age","hauteur","gui","largeur","fees","lutins","perlimpinpin")
+variables=c("age","hauteur","largeur","perlimpinpin")
 for (i in 1:length(variables)){
   p <- create_histogram(broceliande,variables[i])
   plot(p)
@@ -222,5 +222,76 @@ ex()%>%{
   check_error(.,)
   check_for(.)
   check_code(.,"in")
+}
+```
+
+---
+
+## Itération avec purrr
+
+```yaml
+type: NormalExercise
+key: 4e9e35bc57
+xp: 100
+```
+
+
+
+`@instructions`
+
+
+`@hint`
+
+
+`@pre_exercise_code`
+```{r}
+library(ggplot2)
+broceliande=read.csv("http://perso.ens-lyon.fr/lise.vaudor/grimoireStat/datasets/broceliande.csv",
+                     header=TRUE,sep=";")
+create_histogram <- function(nomdata,nomvariable,fillcolor="red"){
+	p <- ggplot(nomdata,aes_string(nomvariable))+
+			geom_histogram(fill=fillcolor)
+  return(p)
+}
+
+```
+
+`@sample_code`
+```{r}
+
+create_histogram <- function(nomdata,nomvariable,fillcolor="red"){
+	p <- ggplot(nomdata,aes_string(nomvariable))+
+			geom_histogram(fill=fillcolor)
+  return(p)
+}
+create_histogram("largeur")
+
+variables=c("age","hauteur","largeur","perlimpinpin")
+listplots <- ___________
+patchwork::wrap_plots(listplots)
+```
+
+`@solution`
+```{r}
+
+create_histogram <- function(nomdata,nomvariable,fillcolor="red"){
+	p <- ggplot(nomdata,aes_string(nomvariable))+
+			geom_histogram(fill=fillcolor)
+  return(p)
+}
+create_histogram("largeur")
+
+variables=c("age","hauteur","largeur","perlimpinpin")
+listplots <- map(variables,create_histogram)
+patchwork::wrap_plots(listplots)
+```
+
+`@sct`
+```{r}
+ex()%>%{
+  check_error(.)
+  check_function(.,"map")%>% {
+    check_arg(.,".fun")
+    check_arg(.,".x")}
 }
 ```
