@@ -219,8 +219,8 @@ for (i in 1:length(variables)){
 `@sct`
 ```{r}
 ex()%>%{
-  check_error()
-  check_operator("for")
-  check_operator("in")
+  check_error(.,)
+  check_operator(.,"for")
+  check_operator(.,"in")
 }
 ```
