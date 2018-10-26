@@ -60,7 +60,7 @@ ex() %>%
 
 ---
 
-## Ecrire une fonction
+## Ecrire une fonction avec 1 argument
 
 ```yaml
 type: NormalExercise
@@ -118,7 +118,7 @@ create_histogram("age")
 ```{r}
 ex()%>%{
   check_error(.)
-  check_function(.,"create_histogram")%>% check_argument("mapping") %>% check_function("aes_string") %>% check_equal()
+  check_function(.,"create_histogram")%>% check_arg("mapping") %>% check_function("aes_string") %>% check_equal()
 }
 success_msg("Eh oui! Pour écrire une fonction, il faut bien **distinguer** les objets qui doivent faire office d'**input** et d'**output** dans un code somme toute ordinaire...")
 ```
@@ -302,4 +302,115 @@ ex()%>%{
 }
 
 success_msg("Bravo! Avez-vous remarqué que nous avions changé l'ordre des arguments de la fonction `create_histogram()` de façon à ce que le nom de la variable soit le **premier argument?")
+```
+
+---
+
+## Ecrire une fonction avec deux arguments
+
+```yaml
+type: NormalExercise
+key: 0fc7f26873
+xp: 100
+```
+
+On souhaiterait produire des nuages de points montrant les quantités d'ingrédients rentrant dans la composition de potions magiques, et les propriétés des potions.
+
+L'environnement ci-contre comprend déjà la table `potions`, ainsi que la librairie `ggplot2`.
+
+`@instructions`
+Complétez le code pour que l'on dispose d'une fonction `create_scatterplot()` qui 
+
+- prendra comme **premier argument** `nomingredient` correspondant un nom d'ingrédient (par exemple "i_givreboises") 
+- prendra comme **deuxième argument** `nompropriete` un nom de propriété magique (par exemple "p_conjuration") 
+- renverra en **sortie** un **scatterplot additioné d'une régression non linéaire** (produite par un appel à `geom_smooth()`), `p`
+
+`@hint`
+
+
+`@pre_exercise_code`
+```{r}
+library(ggplot2)
+potions=read.csv("http://perso.ens-lyon.fr/lise.vaudor/grimoireStat/datasets/potions.csv",
+                 header=TRUE,sep=";")
+```
+
+`@sample_code`
+```{r}
+create_scatterplot <- _____
+_____
+____
+____
+
+
+# Testez ce que renvoie cette fonction
+p <- create_scatterplot("i_givreboises","p_conjuration")
+p
+```
+
+`@solution`
+```{r}
+create_scatterplot <- function(nomingredient,nompropriete){
+  p <- ggplot2(potions, aes_string(x=nomingredient,y=nompropriete))+
+  geom_point()+
+  geom_smooth()
+  return(p)
+}
+
+# Testez ce que renvoie cette fonction
+p <- create_scatterplot("i_givreboises","p_conjuration")
+plot(p)
+```
+
+`@sct`
+```{r}
+ex()%>%{
+  check_function(.,"create_scatterplot")
+  check_error(.)
+  check_function(.,"return")
+  check_object(.,"p")
+}
+success_msg("Vous êtes bien partis pour pouvoir vous créer des petites fonctions 'maison' qui vous faciliteront la vie...")
+```
+
+---
+
+## Boucles for imbriquées
+
+```yaml
+type: NormalExercise
+key: 809a5edcc8
+xp: 100
+```
+
+
+
+`@instructions`
+
+
+`@hint`
+
+
+`@pre_exercise_code`
+```{r}
+library(ggplot2)
+library(purrr)
+potions=read.csv("http://perso.ens-lyon.fr/lise.vaudor/grimoireStat/datasets/potions.csv",
+                 header=TRUE,sep=";")
+
+```
+
+`@sample_code`
+```{r}
+
+```
+
+`@solution`
+```{r}
+
+```
+
+`@sct`
+```{r}
+
 ```
