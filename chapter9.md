@@ -327,7 +327,7 @@ Complétez le code pour que l'on dispose d'une fonction `create_scatterplot()` q
 
 - prendra comme **premier argument** `nomingredient` correspondant un nom d'ingrédient (par exemple "i_givreboises") 
 - prendra comme **deuxième argument** `nompropriete` un nom de propriété magique (par exemple "p_conjuration") 
-- renverra en **sortie** un **scatterplot additioné d'une régression non linéaire** (produite par un appel à `geom_smooth()`), `p`
+- renverra en **sortie** un **scatterplot additionné d'une régression non linéaire** (produite par un appel à `geom_smooth()`), `p`
 
 `@hint`
 
@@ -369,10 +369,20 @@ plot(p)
 `@sct`
 ```{r}
 ex()%>%{
-  check_function(.,"create_scatterplot")
-  check_error(.)
-  check_function(.,"return")
+  check_function(.,"create_scatterplot") %>% 
+     check_body() %>%{
+     	check_function(.,"ggplot") %>% {
+            check_arg(.,"data")
+        	check_arg(.,"mapping") %>% check_function("aes_string") %>%{
+              check_arg(.,"x")
+              check_arg(.,"y")
+            }
+          }
+         check_function(.,"return")
+       
+  }
   check_object(.,"p")
+  check_error(.)
 }
 success_msg("Vous êtes bien partis pour pouvoir vous créer des petites fonctions 'maison' qui vous faciliteront la vie...")
 ```
@@ -458,8 +468,8 @@ for(ingredient in ingredients){
 `@sct`
 ```{r}
 ex() %>%{
-  check_code(."in", index=1)
-  check_code(."in", index=2)
+  check_code(.,"in", index=1)
+  check_code(.,"in", index=2)
   check_function(.,'create_scatterplot')
   check_error(.)
 }
