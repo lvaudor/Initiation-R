@@ -126,8 +126,7 @@ ex()%>%{
          	  check_equal()
       	check_function(.,"geom_histogram")
       }
-  check_function(.,"create_histogram") %>%
-  
+  check_function(.,"create_histogram")  
 }
 success_msg("Eh oui! Pour écrire une fonction, il faut bien **distinguer** les objets qui doivent faire office d'**input** et d'**output** dans un code somme toute ordinaire...")
 ```
@@ -374,7 +373,7 @@ plot(p)
 `@sct`
 ```{r}
 ex()%>%{
-  check_function(.,"create_scatterplot") %>% 
+   check_fun_def(.,"create_scatterplot") %>% 
      check_body() %>%{
      	check_function(.,"ggplot") %>% {
             check_arg(.,"data")
@@ -386,6 +385,7 @@ ex()%>%{
          check_function(.,"return")
        
   }
+  check_function(.,"create_scatterplot")
   check_object(.,"p")
   check_error(.)
 }
@@ -473,8 +473,8 @@ for(ingredient in ingredients){
 `@sct`
 ```{r}
 ex() %>%{
-  check_code(.,"in", index=1)
-  check_code(.,"in", index=2)
+  check_code(.,"in")
+  check_code(.,"in")
   check_function(.,'create_scatterplot')
   check_error(.)
 }
