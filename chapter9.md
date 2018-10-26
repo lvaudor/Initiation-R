@@ -118,11 +118,16 @@ create_histogram("age")
 ```{r}
 ex()%>%{
   check_error(.)
+  check_fun_def(.,"create_histogram") %>%
+  check_body() %>% {
+      	check_function(., "ggplot") %>%
+        	  check_arg("mapping") %>%
+          	  check_function("aes_string") %>% 
+         	  check_equal()
+      	check_function(.,"geom_histogram")
+      }
   check_function(.,"create_histogram") %>%
-  	check_body() %>% 
-  	check_function("ggplot") %>%
-    check_arg("mapping") %>%
-    check_function("aes_string") %>% check_equal()
+  
 }
 success_msg("Eh oui! Pour écrire une fonction, il faut bien **distinguer** les objets qui doivent faire office d'**input** et d'**output** dans un code somme toute ordinaire...")
 ```
@@ -330,7 +335,7 @@ Complétez le code pour que l'on dispose d'une fonction `create_scatterplot()` q
 - renverra en **sortie** un **scatterplot additionné d'une régression non linéaire** (produite par un appel à `geom_smooth()`), `p`
 
 `@hint`
-
+Vous pouvez aller revoir la solution de l'exercice 2 (chapitre 9) pour vous aider...
 
 `@pre_exercise_code`
 ```{r}
