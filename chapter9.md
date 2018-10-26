@@ -122,7 +122,8 @@ ex()%>%{
   check_body() %>% {
       	check_function(., "ggplot") %>%
         	  check_arg("mapping") %>%
-          	  check_function("aes_string") %>% 
+          	  check_function("aes_string") %>%
+              check_arg("x") %>%
          	  check_equal()
       	check_function(.,"geom_histogram")
       }
