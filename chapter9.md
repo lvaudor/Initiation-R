@@ -118,7 +118,11 @@ create_histogram("age")
 ```{r}
 ex()%>%{
   check_error(.)
-  check_function(.,"create_histogram")%>% check_arg("mapping") %>% check_function("aes_string") %>% check_equal()
+  check_function(.,"create_histogram") %>%
+  	check_body() %>% 
+  	check_function("ggplot") %>%
+    check_arg("mapping") %>%
+    check_function("aes_string") %>% check_equal()
 }
 success_msg("Eh oui! Pour écrire une fonction, il faut bien **distinguer** les objets qui doivent faire office d'**input** et d'**output** dans un code somme toute ordinaire...")
 ```
@@ -351,7 +355,7 @@ p
 `@solution`
 ```{r}
 create_scatterplot <- function(nomingredient,nompropriete){
-  p <- ggplot2(potions, aes_string(x=nomingredient,y=nompropriete))+
+  p <- ggplot(potions, aes_string(x=nomingredient,y=nompropriete))+
   geom_point()+
   geom_smooth()
   return(p)
@@ -383,10 +387,10 @@ key: 809a5edcc8
 xp: 100
 ```
 
-
+Reprenons la fonction créée précédemment. On voudrait maintenant itérer sur deux éléments différent de la table `potions`s: la liste des **ingrédients**  (ils commencent tous par "i_") et la liste des **propriétés** (ils commencent tous par "p_"). La table `potions` est déjà dans l'environnement, `ggplot2` et `dplyr`sont déjà chargés, et vous retrouverez le code de la fonction `create_scatterplot()` ci-contre.
 
 `@instructions`
-
+Complétez les boucles for pour produire tous les graphiques combinant les ingrédients d'une part, et les propriétés d'autre part.
 
 `@hint`
 
@@ -394,7 +398,7 @@ xp: 100
 `@pre_exercise_code`
 ```{r}
 library(ggplot2)
-library(purrr)
+library(dplyr)
 potions=read.csv("http://perso.ens-lyon.fr/lise.vaudor/grimoireStat/datasets/potions.csv",
                  header=TRUE,sep=";")
 
@@ -402,15 +406,61 @@ potions=read.csv("http://perso.ens-lyon.fr/lise.vaudor/grimoireStat/datasets/pot
 
 `@sample_code`
 ```{r}
+create_scatterplot <- function(nomingredient,nompropriete){
+  p <- ggplot(potions, aes_string(x=nomingredient,y=nompropriete))+
+  geom_point()+
+  geom_smooth()+
+  scale_x_log10()
+  return(p)
+}
+
+ingredients <- potions %>% 
+	select(starts_with("i_"))%>%
+    colnames()
+proprietes <- potions %>%
+	select(starts_with("p_"))%>%
+    colnames()
+
+for(____){
+  for(___){
+    p <- _______
+    plot(p)
+  }
+}
 
 ```
 
 `@solution`
 ```{r}
+create_scatterplot <- function(nomingredient,nompropriete){
+  p <- ggplot(potions, aes_string(x=nomingredient,y=nompropriete))+
+  geom_point()+
+  geom_smooth()
+  return(p)
+}
+
+ingredients <- potions %>% 
+	select(starts_with("i_"))%>%
+    colnames()
+proprietes <- potions %>%
+	select(starts_with("p_"))%>%
+    colnames()
+
+for(ingredient in ingredients){
+  for(propriete in proprietes){
+    p <- create_scatterplot(ingredient,propriete)
+    plot(p)
+  }
+}
 
 ```
 
 `@sct`
 ```{r}
-
+ex() %>%{
+  check_code(."in", index=1)
+  check_code(."in", index=2)
+  check_function(.,'create_scatterplot')
+  check_error(.)
+}
 ```
