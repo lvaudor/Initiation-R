@@ -123,8 +123,7 @@ ex()%>%{
       	check_function(., "ggplot") %>%
         	  check_arg("mapping") %>%
           	  check_function("aes_string") %>%
-              check_arg("x") %>%
-         	  check_equal()
+              check_arg("x") 
       	check_function(.,"geom_histogram")
       }
   check_function(.,"create_histogram")  
